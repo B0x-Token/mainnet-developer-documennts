@@ -33,6 +33,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>B Zero X - Documentation</title>
+
+    <script src="ethers.umd.min.js"></script>
+
     <style>* {
     margin: 0;
     padding: 0;
@@ -2091,7 +2094,8 @@ body {
             <p class="subtitle">Provide liquidity and earn fees with our Uniswap v4 Dynamic Fee Pools</p>
                  <a   class="external-link" href="https://youtu.be/tHIzfkRPDXQ?si=9SgiO1l_nsAYFHRr">Example dAPP Video Click here</a>
                                    
-        </header>
+            </header>
+    <div class="info-card2"></div>
 
         <section class="section">
             <h2 class="section-title">🎯 What Are Dynamic Fee Pools?</h2>
@@ -2108,71 +2112,22 @@ body {
             <p style="margin-bottom: 25px;">Choose the pool that best fits your liquidity strategy. All pools can use full range or Dynamic for maximum fee capture:</p>
 
             <div class="pools-grid">
+
+
                 <div class="pool-card">
                     <div class="pool-header">
                         <div class="pool-icon">1</div>
-                        <div class="pool-title">B0x / ETH Pool</div>
-                    </div>
-                    <p class="pool-description">Provide liquidity across the entire price range for maximum fee capture.</p>
-                    
-                    <div class="pool-details">
-                        <ul>
-                            <li><strong>Fee:</strong> Dynamic (starts at 2%)</li>
-                            <li><strong>Tick Spacing:</strong> 60</li>
-                            <li><strong>Range:</strong> Full Range or Dynamic</li>
-                            <li><strong>Staking:</strong> <span class="staking-badge not-eligible">Not Eligible ❌</span></li>
-                        </ul>
-                    </div>
-
-                    <div class="warning-note">
-                        <strong>⚠️ Note:</strong> Positions in this pool do not qualify for staking rewards.
-                    </div>
-
-                    <a href="https://app.uniswap.org/positions/create/v4?currencyA=0xa9520FC8c54691af586544aD13Db954AfC345cd4&currencyB=NATIVE&chain=base&hook=0x983dD6eF6A9360331ba80Ed6322ea47fEb9AD000&priceRangeState={%22priceInverted%22:false,%22fullRange%22:true,%22minPrice%22:%22%22,%22maxPrice%22:%22%22,%22initialPrice%22:%22%22}&depositState={%22exactField%22:%22TOKEN0%22,%22exactAmounts%22:{}}&fee={%22isDynamic%22:true,%22feeAmount%22:20000,%22tickSpacing%22:60}&step=1" 
-                       target="_blank" class="pool-button">
-                        Add Liquidity to B0x/ETH
-                    </a>
-                </div>
-
-                <div class="pool-card">
-                    <div class="pool-header">
-                        <div class="pool-icon">2</div>
-                        <div class="pool-title">0xBTC / ETH Pool</div>
-                    </div>
-                    <p class="pool-description">Full range liquidity position for optimized capital efficiency and fee earnings.</p>
-                    
-                    <div class="pool-details">
-                        <ul>
-                            <li><strong>Fee:</strong> Dynamic (starts at 2%)</li>
-                            <li><strong>Tick Spacing:</strong> 60</li>
-                            <li><strong>Range:</strong> Full Range or Dynamic</li>
-                            <li><strong>Staking:</strong> <span class="staking-badge not-eligible">Not Eligible ❌</span></li>
-                        </ul>
-                    </div>
-
-                    <div class="warning-note">
-                        <strong>⚠️ Note:</strong> Positions in this pool do not qualify for staking rewards.
-                    </div>
-
-                    <a href="https://app.uniswap.org/positions/create/v4?currencyA=0xc4d4fd4f4459730d176844c170f2bb323c87eb3b&currencyB=NATIVE&chain=base&hook=0x983dD6eF6A9360331ba80Ed6322ea47fEb9AD000&priceRangeState={%22priceInverted%22:false,%22fullRange%22:true,%22minPrice%22:%22%22,%22maxPrice%22:%22%22,%22initialPrice%22:%22%22}&depositState={%22exactField%22:%22TOKEN0%22,%22exactAmounts%22:{}}&fee={%22feeAmount%22:20000,%22tickSpacing%22:60,%22isDynamic%22:true}&step=1" 
-                       target="_blank" class="pool-button">
-                        Add Liquidity to 0xBTC/ETH
-                    </a>
-                </div>
-
-                <div class="pool-card">
-                    <div class="pool-header">
-                        <div class="pool-icon">3</div>
                         <div class="pool-title">B0x / 0xBTC Pool</div>
                     </div>
                     <p class="pool-description">Full range positions between B0x and 0xBTC tokens.</p>
                     
                     <div class="pool-details">
-                        <ul>
-                            <li><strong>Fee:</strong> Dynamic (starts at 10%)</li>
+                        <ul><li data-fee-start="2%">
+                            <strong>Fee:</strong> Dynamic (<span class="fee-valueB0x0xBTC">?%</span>)
+</li>
                             <li><strong>Tick Spacing:</strong> 60</li>
                             <li><strong>Range:</strong> Full Range or Dynamic</li>
-                            <li><strong>Staking:</strong> <span class="staking-badge eligible">Eligible ✅</span></li>
+                            <li><strong>Staking:</strong> <span class="staking-badge eligible">Eligible ✅ IF FULL RANGE</span></li>
                         </ul>
                     </div>
 
@@ -2180,10 +2135,92 @@ body {
                         <strong>💎 Bonus:</strong> Positions in this pool qualify to be staked for staking rewards when they are Full Range and made in our dApp.
                     </div>
 
-                    <a href="https://app.uniswap.org/positions/create/v4?currencyA=0xc4d4fd4f4459730d176844c170f2bb323c87eb3b&currencyB=0xa9520FC8c54691af586544aD13Db954AfC345cd4&chain=base&hook=0x983dD6eF6A9360331ba80Ed6322ea47fEb9AD000&priceRangeState={%22priceInverted%22:false,%22fullRange%22:true,%22minPrice%22:%22%22,%22maxPrice%22:%22%22,%22initialPrice%22:%22%22}&depositState={%22exactField%22:%22TOKEN0%22,%22exactAmounts%22:{}}&fee={%22isDynamic%22:true,%22feeAmount%22:100000,%22tickSpacing%22:60}&step=1" 
-                       target="_blank" class="pool-button">
-                        Add Liquidity to B0x/0xBTC
-                    </a>
+                        <a href="https://app.uniswap.org/positions/create" 
+                          id="uniswap-linkB0x0xBTC" target="_blank" class="pool-button">
+                            Add Liquidity to B0x/0xBTC
+                        </a>
+                </div>
+
+
+                <div class="pool-card">
+                    <div class="pool-header">
+                        <div class="pool-icon">2</div>
+                        <div class="pool-title">B0x / ETH Pool</div>
+                    </div>
+                    <p class="pool-description">Provide liquidity across the entire price range for maximum fee capture.</p>
+                    
+                    <div class="pool-details">
+                        <ul><li data-fee-start="2%">
+                            <strong>Fee:</strong> Dynamic (<span class="fee-valueB0xETH">?%</span>)
+</li>
+                            <li><strong>Tick Spacing:</strong> 60</li>
+                            <li><strong>Range:</strong> Full Range or Dynamic</li>
+                            <li><strong>Staking:</strong> <span class="staking-badge not-eligible">Not Eligible ❌</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-note">
+                        <strong>⚠️ Note:</strong> Positions in this pool do not qualify for staking rewards.
+                    </div>
+
+                        <a href="https://app.uniswap.org/positions/create" 
+                          id="uniswap-linkB0xETH" target="_blank" class="pool-button">
+                            Add Liquidity to B0x/ETH
+                        </a>
+                </div>
+
+                <div class="pool-card">
+                    <div class="pool-header">
+                        <div class="pool-icon">3</div>
+                        <div class="pool-title">0xBTC / ETH Pool</div>
+                    </div>
+                    <p class="pool-description">Full range liquidity position for optimized capital efficiency and fee earnings.</p>
+                    
+                    <div class="pool-details">
+                        <ul><li data-fee-start="2%"></li>
+                            <strong>Fee:</strong> Dynamic (<span class="fee-value0xBTCETH">?%</span>)
+</li>
+                            <li><strong>Tick Spacing:</strong> 60</li>
+                            <li><strong>Range:</strong> Full Range or Dynamic</li>
+                            <li><strong>Staking:</strong> <span class="staking-badge not-eligible">Not Eligible ❌</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-note">
+                        <strong>⚠️ Note:</strong> Positions in this pool do not qualify for staking rewards.
+                    </div>
+
+                        <a href="https://app.uniswap.org/positions/create" 
+                           id="uniswap-link0xBTCETH" target="_blank" class="pool-button">
+                            Add Liquidity to 0xBTC/ETH
+                        </a>
+                </div>
+
+                <div class="pool-card">
+                    <div class="pool-header">
+                        <div class="pool-icon">4</div>
+                        <div class="pool-title">R0xBTC / 0xBTC Pool</div>
+                    </div>
+                    <p class="pool-description">Full range positions between RightsTo0xBitcoin and 0xBTC tokens.</p>
+                    
+                    <div class="pool-details">
+                        <ul><li data-fee-start="2%"></li>
+                            <strong>Fee:</strong> Dynamic (<span class="fee-valueR0xBTC0xBTC">?%</span>)
+</li>
+                            <li><strong>Tick Spacing:</strong> 60</li>
+                            <li><strong>Range:</strong> Full Range or Dynamic</li>
+                            <li><strong>Staking:</strong> <span class="staking-badge not-eligible">Not Eligible ❌</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-note">
+                        <strong>⚠️ Note:</strong> Positions in this pool do not qualify for staking rewards.
+                    </div>
+
+                        <a href="https://app.uniswap.org/positions/create" 
+                           id="uniswap-linkR0xBTC0xBTC" target="_blank" class="pool-button">
+                            Add Liquidity to R0xBTC/0xBTC
+                        </a>
                 </div>
             </div>
         </section>
@@ -6021,6 +6058,23 @@ contract B0x_Mainnet {
     </main>
 
    <script>
+
+    var customRPC = "https://base.llamarpc.com";
+
+
+// Token addresses mapping
+const tokenAddresses = {
+'ETH': '0x0000000000000000000000000000000000000000', // addresses
+'B0x': '0xa9520FC8c54691af586544aD13Db954AfC345cd4',
+'0xBTC': '0xc4D4FD4F4459730d176844c170F2bB323c87Eb3B',
+'WETH': '0x4200000000000000000000000000000000000006',
+'RightsTo0xBTC': '0x004DCEb20712EaBA0606e83c2E43BF2CDdfa0388', //temp until mainnet fill in with actual token on launch
+'USDC': '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913', //mainnet base USDC
+};
+
+
+
+
 // Enhanced copy functionality for configuration blocks
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM loaded, setting up copy functionality...');
@@ -6453,6 +6507,11 @@ function updateSidebarHighlight(pageId) {
 
 
 function showPage(pageId) {
+    console.log("PAGE ID = ",pageId);
+    if(pageId=="side-pools"){
+
+         getAllFees();
+    }
     // Hide all pages
     document.querySelectorAll('.content-page').forEach(page => {
         page.classList.remove('active');
@@ -6759,6 +6818,452 @@ window.addEventListener('hashchange', function() {
         showPage(hash);
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+async function getAllPoolFees() {
+var hookAddresszz = "0x983dD6eF6A9360331ba80Ed6322ea47fEb9AD000";
+    const MULTICALL3_ADDRESS = "0xcA11bde05977b3631167028862bE2a173976CA11"; // Multicall3 on Base
+    
+    const multicall3ABI = [
+        {
+            "type": "function",
+            "name": "aggregate3",
+            "inputs": [
+                {
+                    "name": "calls",
+                    "type": "tuple[]",
+                    "components": [
+                        {
+                            "name": "target",
+                            "type": "address"
+                        },
+                        {
+                            "name": "allowFailure",
+                            "type": "bool"
+                        },
+                        {
+                            "name": "callData",
+                            "type": "bytes"
+                        }
+                    ]
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "returnData",
+                    "type": "tuple[]",
+                    "components": [
+                        {
+                            "name": "success",
+                            "type": "bool"
+                        },
+                        {
+                            "name": "returnData",
+                            "type": "bytes"
+                        }
+                    ]
+                }
+            ],
+            "stateMutability": "view"
+        }
+    ];
+
+    const hookABI = [
+        {
+            "type": "function",
+            "name": "getCurrentPoolFee",
+            "inputs": [
+                {
+                    "name": "poolKey",
+                    "type": "tuple",
+                    "components": [
+                        {
+                            "name": "currency0",
+                            "type": "address"
+                        },
+                        {
+                            "name": "currency1",
+                            "type": "address"
+                        },
+                        {
+                            "name": "fee",
+                            "type": "uint24"
+                        },
+                        {
+                            "name": "tickSpacing",
+                            "type": "int24"
+                        },
+                        {
+                            "name": "hooks",
+                            "type": "address"
+                        }
+                    ]
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "currentFee",
+                    "type": "uint24"
+                }
+            ],
+            "stateMutability": "view"
+        }
+    ];
+        const provider12121212 = new ethers.providers.JsonRpcProvider(customRPC);
+    const multicallContract = new ethers.Contract(MULTICALL3_ADDRESS, multicall3ABI, provider12121212);
+    const hookInterface = new ethers.utils.Interface(hookABI);
+
+    // Helper function to sort currencies
+    function sortCurrencies(token1, token2) {
+        if (token1.toLowerCase() < token2.toLowerCase()) {
+            return [token1, token2];
+        } else {
+            return [token2, token1];
+        }
+    }
+
+    // Prepare pool keys for all three pools
+    const [b0xEthCurrency0, b0xEthCurrency1] = sortCurrencies(tokenAddresses['ETH'], tokenAddresses['B0x']);
+    const poolKeyB0xETH = {
+        currency0: b0xEthCurrency0,
+        currency1: b0xEthCurrency1,
+        fee: 0x800000,
+        tickSpacing: 60,
+        hooks: hookAddresszz
+    };
+
+    const [oxbtcEthCurrency0, oxbtcEthCurrency1] = sortCurrencies(tokenAddresses['0xBTC'], tokenAddresses['ETH']);
+    const poolKey0xBTCETH = {
+        currency0: oxbtcEthCurrency0,
+        currency1: oxbtcEthCurrency1,
+        fee: 0x800000,
+        tickSpacing: 60,
+        hooks: hookAddresszz
+    };
+
+    const [b0x0xbtcCurrency0, b0x0xbtcCurrency1] = sortCurrencies(tokenAddresses['0xBTC'], tokenAddresses['B0x']);
+    const poolKeyB0x0xBTC = {
+        currency0: b0x0xbtcCurrency0,
+        currency1: b0x0xbtcCurrency1,
+        fee: 0x800000,
+        tickSpacing: 60,
+        hooks: hookAddresszz
+    };
+
+    const [R0xBTC0xbtcCurrency0, R0xBTC0xbtcCurrency1] = sortCurrencies(tokenAddresses['0xBTC'], tokenAddresses['RightsTo0xBTC']);
+    const poolKeyR0xBTC0xBTC = {
+        currency0: R0xBTC0xbtcCurrency0,
+        currency1: R0xBTC0xbtcCurrency1,
+        fee: 0x800000,
+        tickSpacing: 60,
+        hooks: hookAddresszz
+    };
+
+    // Encode call data for each pool
+    const callData1 = hookInterface.encodeFunctionData("getCurrentPoolFee", [poolKeyB0xETH]);
+    const callData2 = hookInterface.encodeFunctionData("getCurrentPoolFee", [poolKey0xBTCETH]);
+    const callData3 = hookInterface.encodeFunctionData("getCurrentPoolFee", [poolKeyB0x0xBTC]);
+    const callData4 = hookInterface.encodeFunctionData("getCurrentPoolFee", [poolKeyR0xBTC0xBTC]);
+    // Prepare multicall calls array
+    const calls = [
+        {
+            target: hookAddresszz,
+            allowFailure: true,
+            callData: callData1
+        },
+        {
+            target: hookAddresszz,
+            allowFailure: true,
+            callData: callData2
+        },
+        {
+            target: hookAddresszz,
+            allowFailure: true,
+            callData: callData3
+        },
+        {
+            target: hookAddresszz,
+            allowFailure: true,
+            callData: callData4
+        }
+    ];
+
+    try {
+        const results = await multicallContract.aggregate3(calls);
+        
+        // Store the fees globally or return them
+        const poolFees = {
+            b0xEth: 0,
+            oxbtcEth: 0,
+            b0xOxbtc: 0
+        };
+
+        // Decode result 1 - B0x/ETH
+        if (results[0].success) {
+            const decoded = hookInterface.decodeFunctionResult("getCurrentPoolFee", results[0].returnData);
+            poolFees.b0xEth = decoded.currentFee;
+            console.log("B0x/ETH Fee:", poolFees.b0xEth / 10000, "%");
+        } else {
+            console.error("Failed to fetch B0x/ETH fee");
+        }
+
+        // Decode result 2 - 0xBTC/ETH
+        if (results[1].success) {
+            const decoded = hookInterface.decodeFunctionResult("getCurrentPoolFee", results[1].returnData);
+            poolFees.oxbtcEth = decoded.currentFee;
+            console.log("0xBTC/ETH Fee:", poolFees.oxbtcEth / 10000, "%");
+        } else {
+            console.error("Failed to fetch 0xBTC/ETH fee");
+        }
+
+        // Decode result 3 - B0x/0xBTC
+        if (results[2].success) {
+            const decoded = hookInterface.decodeFunctionResult("getCurrentPoolFee", results[2].returnData);
+            poolFees.b0xOxbtc = decoded.currentFee;
+            console.log("B0x/0xBTC Fee:", poolFees.b0xOxbtc / 10000, "%");
+        } else {
+            console.error("Failed to fetch B0x/0xBTC fee");
+        }
+
+        // Decode result 4- R0xBTC/0xBTC
+        if (results[3].success) {
+            const decoded = hookInterface.decodeFunctionResult("getCurrentPoolFee", results[3].returnData);
+            poolFees.R0xBTC0xBTC = decoded.currentFee;
+            console.log("B0x/0xBTC Fee:", poolFees.b0xOxbtc / 10000, "%");
+        } else {
+            console.error("Failed to fetch B0x/0xBTC fee");
+        }
+
+        // Update UI with all fees
+        const infoCard = document.querySelector('#admin-functions .info-card2');
+        if (infoCard) {
+            infoCard.innerHTML = `
+                <h3>Current Pool Fees</h3>
+                <p>B0x/ETH: ${poolFees.b0xEth / 10000}%</p>
+                <p>0xBTC/ETH: ${poolFees.oxbtcEth / 10000}%</p>
+                <p>B0x/0xBTC: ${poolFees.b0xOxbtc / 10000}%</p>
+            `;
+        }
+
+        return poolFees;
+
+    } catch (error) {
+        console.error('Error fetching pool fees:', error);
+        const infoCard = document.querySelector('#admin-functions .info-card2');
+        if (infoCard) {
+            infoCard.innerHTML = `
+                <h3>Current Pool Fees</h3>
+                <p>Error loading fee data try reload or contact me on discord, use manual add and add each token and hook address at https://app.uniswap.org/positions/create </p>
+            `;
+        }
+        return null;
+    }
+}
+
+
+
+
+        async function getAllFees(){
+    var poolsfee = await getAllPoolFees();
+    console.log("pools Fee: ", poolsfee);
+    
+    // B0x/ETH Pool
+    var feeValueSpanR0xBTC0xBTC = document.querySelector('.fee-valueR0xBTC0xBTC');
+    console.log("Found .fee-valueR0xBTC0xBTC", feeValueSpanR0xBTC0xBTC);
+    if (feeValueSpanR0xBTC0xBTC) {
+        var listItem = feeValueSpanR0xBTC0xBTC.closest('li');
+        var curFeeR0xBTC0xBTC = poolsfee.b0xEth / 10000;
+        feeValueSpanR0xBTC0xBTC.textContent = curFeeR0xBTC0xBTC + '%';
+        if (listItem) {
+            listItem.dataset.feeStart = curFeeR0xBTC0xBTC + '%';
+        }
+        console.log("Set R0xBTC/0xBTC fee to:", curFeeR0xBTC0xBTC + '%');
+    } else {
+        console.error("Could not find .fee-valueB0xETH element");
+    }
+
+    // B0x/ETH Pool
+    var feeValueSpanB0xETH = document.querySelector('.fee-valueB0xETH');
+    console.log("Found .fee-valueB0xETH:", feeValueSpanB0xETH);
+    if (feeValueSpanB0xETH) {
+        var listItem = feeValueSpanB0xETH.closest('li');
+        var curFeeB0xETH = poolsfee.b0xEth / 10000;
+        feeValueSpanB0xETH.textContent = curFeeB0xETH + '%';
+        if (listItem) {
+            listItem.dataset.feeStart = curFeeB0xETH + '%';
+        }
+        console.log("Set B0x/ETH fee to:", curFeeB0xETH + '%');
+    } else {
+        console.error("Could not find .fee-valueB0xETH element");
+    }
+
+    // 0xBTC/ETH Pool
+    var feeValueSpan0xBTCETH = document.querySelector('.fee-value0xBTCETH');
+    console.log("Found .fee-value0xBTCETH:", feeValueSpan0xBTCETH);
+    if (feeValueSpan0xBTCETH) {
+        var listItem = feeValueSpan0xBTCETH.closest('li');
+        var curFee0xBTCETH = poolsfee.oxbtcEth / 10000;
+        feeValueSpan0xBTCETH.textContent = curFee0xBTCETH + '%';
+        if (listItem) {
+            listItem.dataset.feeStart = curFee0xBTCETH + '%';
+        }
+        console.log("Set 0xBTC/ETH fee to:", curFee0xBTCETH + '%');
+    } else {
+        console.error("Could not find .fee-value0xBTCETH element");
+    }
+
+    // B0x/0xBTC Pool
+    var feeValueSpanB0x0xBTC = document.querySelector('.fee-valueB0x0xBTC');
+    console.log("Found .fee-valueB0x0xBTC:", feeValueSpanB0x0xBTC);
+    if (feeValueSpanB0x0xBTC) {
+        var listItem = feeValueSpanB0x0xBTC.closest('li');
+        var curFeeB0x0xBTC = poolsfee.b0xOxbtc / 10000;
+        feeValueSpanB0x0xBTC.textContent = curFeeB0x0xBTC + '%';
+        if (listItem) {
+            listItem.dataset.feeStart = curFeeB0x0xBTC + '%';
+        }
+        console.log("Set B0x/0xBTC fee to:", curFeeB0x0xBTC + '%');
+    } else {
+        console.error("Could not find .fee-valueB0x0xBTC element");
+    }
+
+   // poolsfee.R0xBTC0xBTC
+
+   // poolsfee.b0xOxbtc
+    var linkB0x0xBTCz= "https://app.uniswap.org/positions/create/v4?currencyA=0xc4d4fd4f4459730d176844c170f2bb323c87eb3b&currencyB=0xa9520fc8c54691af586544ad13db954afc345cd4&chain=base&hook=0x983dD6eF6A9360331ba80Ed6322ea47fEb9AD000&priceRangeState={%22priceInverted%22:false,%22fullRange%22:true,%22minPrice%22:%22%22,%22maxPrice%22:%22%22,%22initialPrice%22:%22%22}&depositState={%22exactField%22:%22TOKEN0%22,%22exactAmounts%22:{}}&fee={%22feeAmount%22:" +poolsfee.b0xOxbtc+",%22tickSpacing%22:60,%22isDynamic%22:true}&step=1";
+      var linkB0xETHz = "https://app.uniswap.org/positions/create/v4?currencyA=0xa9520FC8c54691af586544aD13Db954AfC345cd4&currencyB=NATIVE&chain=base&hook=0x983dD6eF6A9360331ba80Ed6322ea47fEb9AD000&priceRangeState={%22priceInverted%22:false,%22fullRange%22:true,%22minPrice%22:%22%22,%22maxPrice%22:%22%22,%22initialPrice%22:%22%22}&depositState={%22exactField%22:%22TOKEN0%22,%22exactAmounts%22:{}}&fee={%22isDynamic%22:true,%22feeAmount%22:"+ poolsfee.b0xEth +",%22tickSpacing%22:60}&step=1";
+
+
+        var link0xBTCETHz = "https://app.uniswap.org/positions/create/v4?currencyA=0xc4d4fd4f4459730d176844c170f2bb323c87eb3b&currencyB=NATIVE&chain=base&hook=0x983dD6eF6A9360331ba80Ed6322ea47fEb9AD000&priceRangeState={%22priceInverted%22:false,%22fullRange%22:true,%22minPrice%22:%22%22,%22maxPrice%22:%22%22,%22initialPrice%22:%22%22}&depositState={%22exactField%22:%22TOKEN0%22,%22exactAmounts%22:{}}&fee={%22feeAmount%22:" + poolsfee.oxbtcEth +",%22tickSpacing%22:60,%22isDynamic%22:true}&step=1";
+
+        var linkR0xBTC0xBTCz = "https://app.uniswap.org/positions/create?currencyA=0xc4d4fd4f4459730d176844c170f2bb323c87eb3b&currencyB=0x004dceb20712eaba0606e83c2e43bf2cddfa0388&chain=base&hook=0x983dD6eF6A9360331ba80Ed6322ea47fEb9AD000&priceRangeState={%22priceInverted%22:false,%22fullRange%22:false,%22minPrice%22:%22%22,%22maxPrice%22:%22%22,%22initialPrice%22:%22%22,%22inputMode%22:%22price%22}&depositState={%22exactField%22:%22TOKEN0%22,%22exactAmounts%22:{}}&fee={%22feeAmount%22:" + poolsfee.R0xBTC0xBTC +",%22tickSpacing%22:60,%22isDynamic%22:true}&step=1";
+
+
+        const linkB0xETH = document.getElementById('uniswap-linkB0xETH');
+const linkB0x0xBTC = document.getElementById('uniswap-linkB0x0xBTC');
+const link0xBTCETH = document.getElementById('uniswap-link0xBTCETH');
+const linkR0xBTC0xBTC = document.getElementById('uniswap-linkR0xBTC0xBTC');
+// Assign href values to each link
+linkB0xETH.href = linkB0xETHz;
+linkB0x0xBTC.href = linkB0x0xBTCz;
+link0xBTCETH.href = link0xBTCETHz;
+
+linkR0xBTC0xBTC.href = linkR0xBTC0xBTCz;
+
+
+}
+
+
+
+
 
     </script>
 </body>
