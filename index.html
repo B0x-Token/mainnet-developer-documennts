@@ -1687,6 +1687,9 @@ body {
     <button class="nav-header" data-page="what-is-b-zero-x" onclick="showPage('what-is-b-zero-x')">
         What is B Zero X?
     </button>
+    <button class="nav-header" data-page="whitepaper" onclick="showPage('whitepaper')">
+        B Zero X Whitepaper
+    </button>
 </div>
 
 <div class="nav-item">
@@ -1904,7 +1907,125 @@ body {
                 </div>
             </div>
         </div>
+<!-- B Zero X Whitepaper Page -->
+<div class="content-page" id="whitepaper">
+    <div class="content-header">
+        <h1 class="content-title">B Zero X Whitepaper</h1>
+        <p class="content-description">
+            B Zero X is a revolutionary DeFi protocol that combines proof-of-work mining with Uniswap v4 liquidity provision, 
+            creating a sustainable ecosystem for yield generation through mining rewards and liquidity staking.
+        </p>
+    </div>
 
+    <div class="content-section">
+        <h2 class="section-title">Protocol Overview</h2>
+        <div class="section-content">
+            <p>
+                B Zero X represents the next evolution in decentralized finance, integrating proof-of-work consensus mechanisms 
+                with advanced liquidity provisioning strategies. Built on top of Uniswap v4's hook system, our protocol enables 
+                users to earn rewards through multiple mechanisms while maintaining decentralization and security.
+            </p>
+            
+            <h3>Key Features</h3>
+            <ul>
+                <li><strong>Proof-of-Work Mining:</strong> Mine B0x tokens using computational power, ensuring fair distribution</li>
+                <li><strong>Uniswap v4 Integration:</strong> Advanced hooks for optimized liquidity provisioning</li>
+                <li><strong>Token Conversion:</strong> Seamless conversion between B0x and 0xBitcoin</li>
+                <li><strong>Token Bridging:</strong> Use Ethereum or Base Blockchain and bridge between them</li>
+                <li><strong>Staking Rewards:</strong> Earn continuous rewards through liquidity provision</li>
+                <li><strong>Permissionless Access:</strong> No gatekeepers, fully decentralized protocol</li>
+            </ul>
+
+            <h3>Architecture</h3>
+            <p>
+                The B Zero X protocol consists of several interconnected smart contracts that work together to provide 
+                a comprehensive DeFi experience. The core components include mining contracts, liquidity management, 
+                and reward distribution systems.
+            </p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2 class="section-title">Uniswap v4 Staking Pool</h2>
+        <div class="section-content">
+            <p>
+                Our Uniswap v4 staking pools utilize custom hooks to enhance liquidity provision with additional liquidity optimizations for fees per swap.
+            </p>
+
+            <h3>Features</h3>
+            <ul>
+                <li>Adjustable Fee for Uniswap Pool</li>
+                <li>Dynamic fee optimization</li>
+                <li>Multi Token Support</li>
+                <li>Start new staking periods seemlessly</li>
+                <li>45 Day Staking Periods</li>
+                <li>Variable Decaying Withdraw Fee to prevent abuse</li>
+            </ul>
+
+            <h3>Supported Pairs</h3>
+            <ul>
+                <li>B0x/0xBitcoin</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2 class="section-title">Proof of Work Contract</h2>
+        <div class="section-content">
+            <p>
+                B Zero X uses a modified proof-of-work algorithm optimized for fair distribution and energy efficiency. 
+                The mining difficulty adjusts automatically to maintain consistent block times.
+            </p>
+
+            <h3>Technical Specifications</h3>
+            <ul>
+                <li><strong>Algorithm:</strong> Keccak256-based hash function</li>
+                <li><strong>Block Time:</strong> ~10 minutes average</li>
+                <li><strong>Difficulty Adjustment:</strong> Every 2016 epochs or  14 days + 1 mint or 256 mints and 7 days + 1 mint</li>
+                <li><strong>Max Supply of B0x:</strong> 32,500,000 B0x tokens</li>
+                <li><strong>Max Mined Supply (0xBTC + B0x Mining):</strong> 21,000,000 B0x tokens</li>
+                <li><strong>Halving:</strong> Every 210,000 Epochs</li>
+            </ul>
+
+            <h3>Mining Process</h3>
+            <p>
+                Miners compete to solve cryptographic puzzles by finding nonces that produce hash values meeting 
+                the current difficulty target. Successful miners receive newly minted B0x tokens as rewards. 
+                The Uniswap v4 Liquidity Staking Contract also recieves 1:1 what miners make.
+            </p>
+        </div>
+    </div>
+
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-title">Proof of Work Mining</div>
+            <div class="feature-description">
+                Mine B0x tokens using computational power, ensuring true decentralization and fair distribution without pre-mines or ICOs.
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-title">Uniswap v4 Integration</div>
+            <div class="feature-description">
+                Leverage advanced hooks to optimize liquidity provisioning and maximize yield generation through automated strategies.
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-title">Token Conversion</div>
+            <div class="feature-description">
+                Seamlessly convert between B0x and 0xBitcoin tokens with a never ending 100% reverseable and option conversion!
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-title">Staking Rewards</div>
+            <div class="feature-description">
+                Earn continuous rewards by staking your tokens in our optimized liquidity pools with dynamic APY.
+            </div>
+        </div>
+    </div>
+</div>
         <!-- Mainnet Deployments Page -->
         <div class="content-page" id="mainnet">
             <div class="content-header">
@@ -6319,6 +6440,7 @@ let currentPage = 'what-is-b-zero-x';
         // Define page order for navigation
         const pageOrder = [
             'what-is-b-zero-x',
+            'whitepaper',
             'proof-of-work',
             'uniswap-v4-staking',
             'hook-address',
@@ -6347,6 +6469,7 @@ let currentPage = 'what-is-b-zero-x';
 
         const pageTitles = {
             'what-is-b-zero-x': 'What is B Zero X?',
+            'whitepaper': 'Whitepaper',
             'proof-of-work': 'Proof of Work Contract',
             'uniswap-v4-staking': 'Uniswap v4 Staking Pool',
             'hook-address': 'Hook Address',
@@ -6647,6 +6770,10 @@ function showPage(pageId) {
         id: 'what-is-b-zero-x', 
         title: 'What is B Zero X?', 
         keywords: 'bzero overview protocol defi mining uniswap v4 proof work liquidity staking rewards permissionless decentralized architecture features' 
+    },{ 
+        id: 'whitepaper', 
+        title: 'Whitepaper', 
+        keywords: 'whitepaper summary bzero overview protocol defi mining uniswap v4 proof work liquidity staking rewards permissionless decentralized architecture features' 
     },
     { 
         id: 'proof-of-work', 
