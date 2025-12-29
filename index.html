@@ -3,7 +3,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-    <title>B0x Token DEFI dAPP Operations</title>
+    <title>B0x Token DEFI Documents</title>
 
     <!-- Favicon -->
     <link rel="icon" href="https://raw.githubusercontent.com/B0x-Token/B0x-Website/refs/heads/main/images/favicon.ico"
@@ -1771,9 +1771,9 @@ body {
         <!-- What is B Zero X Page -->
         <div class="content-page active" id="what-is-b-zero-x">
             <div class="content-header">
-                <h1 class="content-title">What is B Zero X?</h1>
+                <h1 class="content-title">What is B Zero X or B0x?</h1>
                 <p class="content-description">
-                    B Zero X is a revolutionary DeFi protocol that combines proof-of-work mining with Uniswap v4 liquidity provision, 
+                    B Zero X or B0x is a revolutionary Proof of Work Decentralized Finance protocol that combines proof-of-work mining with Uniswap v4 liquidity pools, 
                     creating a sustainable ecosystem for yield generation through mining rewards and liquidity staking.
                 </p>
             </div>
@@ -1784,7 +1784,7 @@ body {
                     <p>
                         B Zero X represents the next evolution in decentralized finance, integrating proof-of-work consensus mechanisms 
                         with advanced liquidity provisioning strategies. Built on top of Uniswap v4's hook system, our protocol enables 
-                        users to earn rewards through multiple mechanisms while maintaining decentralization and security.
+                        users to earn rewards through swap fees and mining rewards while maintaining decentralization and security.
                     </p>
                     
                     <h3>Key Features</h3>
@@ -1794,15 +1794,16 @@ body {
                         <li><strong>Token Conversion:</strong> Seamless conversion between B0x and 0xBitcoin</li>
                         <li><strong>Token Bridging:</strong> Use Ethereum or Base Blockchain and bridge between them</li>
                         <li><strong>Staking Rewards:</strong> Earn continuous rewards through liquidity provision</li>
+                        <li><strong>Difficulty Based Pricing:</strong> The more popular the system gets with miners, the more the token costs to generate!</li>
                         <li><strong>Permissionless Access:</strong> No gatekeepers, fully decentralized protocol</li>
                     </ul>
 
-                    <h3>Architecture</h3>
-                    <p>
-                        The B Zero X protocol consists of several interconnected smart contracts that work together to provide 
-                        a comprehensive DeFi experience. The core components include mining contracts, liquidity management, 
-                        and reward distribution systems.
-                    </p>
+                <h3>Architecture</h3>
+                <p>
+                    The B Zero X protocol consists of several interconnected smart contracts that work together to provide 
+                    a comprehensive DeFi experience. The core components include mining contracts, liquidity management, 
+                    and reward distribution systems.
+                </p>
                 </div>
             </div>
 
@@ -1810,14 +1811,14 @@ body {
                 <div class="feature-card">
                     <div class="feature-title">Proof of Work Mining</div>
                     <div class="feature-description">
-                        Mine B0x tokens using computational power, ensuring true decentralization and fair distribution without pre-mines or ICOs.
+                        Mine B0x tokens using computational power, ensuring true decentralization and fair distribution without pre-mines or ICOs.  The more hashpower the more it costs to mine!
                     </div>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-title">Uniswap v4 Integration</div>
                     <div class="feature-description">
-                        Leverage advanced hooks to optimize liquidity provisioning and maximize yield generation through automated strategies.
+                        Leverage advanced hooks to optimize liquidity provisioning and maximize yield generation through dynamic changes in Fees to swap the token.
                     </div>
                 </div>
 
@@ -1933,6 +1934,7 @@ body {
                 <li><strong>Token Conversion:</strong> Seamless conversion between B0x and 0xBitcoin</li>
                 <li><strong>Token Bridging:</strong> Use Ethereum or Base Blockchain and bridge between them</li>
                 <li><strong>Staking Rewards:</strong> Earn continuous rewards through liquidity provision</li>
+                <li><strong>Difficulty Based Pricing:</strong> The more popular the system gets with miners, the more the token costs to generate!</li>
                 <li><strong>Permissionless Access:</strong> No gatekeepers, fully decentralized protocol</li>
             </ul>
 
@@ -3649,15 +3651,15 @@ await b0xContract.depositFromV1toV2(amount);</div>
                 <h3>Reward Halving Schedule</h3>
                 <div class="info-item">
                     <span class="info-label">Era 1:</span>
-                    <span class="info-value">50 B0x per block</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Era 2:</span>
                     <span class="info-value">25 B0x per block</span>
                 </div>
                 <div class="info-item">
-                    <span class="info-label">Era 3:</span>
+                    <span class="info-label">Era 2:</span>
                     <span class="info-value">12.5 B0x per block</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Era 3:</span>
+                    <span class="info-value">7.25 B0x per block</span>
                 </div>
                 <div class="info-item">
                     <span class="info-label">Pattern:</span>
@@ -3719,7 +3721,7 @@ await b0xContract.depositFromV1toV2(amount);</div>
                 <h3>Economic Mechanisms</h3>
                 <div class="info-item">
                     <span class="info-label">Minimum ETH Price:</span>
-                    <span class="info-value">0.0000005 ETH per token (~$0.00225)</span>
+                    <span class="info-value">0.0000005 ETH per token (~$0.0015)</span>
                 </div>
                 <div class="info-item">
                     <span class="info-label">Difficulty Scaling:</span>
@@ -3774,7 +3776,7 @@ await b0xContract.depositFromV1toV2(amount);</div>
                 <h3>Performance Tracking</h3>
                 <div class="info-item">
                     <span class="info-label">Slow Blocks:</span>
-                    <span class="info-value">Blocks taking > 12 minutes to mine</span>
+                    <span class="info-value">Blocks taking > 10 minutes to mine</span>
                 </div>
                 <div class="info-item">
                     <span class="info-label">Adjustment Trigger:</span>
@@ -3939,6 +3941,10 @@ await b0xContract.depositFromV1toV2(amount);</div>
                     <div class="stat-label">LP Rewards Allocation</div>
                 </div>
                 <div class="stat-card">
+                    <div class="stat-value">31,164,100</div>
+                    <div class="stat-label">Max Total Supply of B0x</div>
+                </div>
+                <div class="stat-card">
                     <div class="stat-value">1:1</div>
                     <div class="stat-label">Conversion Ratio</div>
                 </div>
@@ -3958,8 +3964,8 @@ await b0xContract.depositFromV1toV2(amount);</div>
                 <span class="info-value">10,164,100 B0x (1:1 with mining)</span>
             </div>
             <div class="info-item">
-                <span class="info-label">Test Tokens:</span>
-                <span class="info-value">10,000 B0x (remove for mainnet)</span>
+                <span class="info-label">Previous B0x Airdrop</span>
+                <span class="info-value">380,000 of the current supply went half to the LP and half to previous owners of B0x for the second launch</span>
             </div>
         </div>
 
