@@ -2141,8 +2141,8 @@ body {
         <div class="contract-name">RightsTo0xBitcoin Token</div>
 
         <div class="contract-description">RightsTo0xBitcoin on Base Mainnet</div>
-        <div class="contract-address">0x2ffa14b113b0a598b07af6714f42dd75bddffd3e</div>
-        <a href="https://basescan.org/address/0x2ffa14b113b0a598b07af6714f42dd75bddffd3e" target="_blank" class="link">🔍 View on BaseScan</a>
+        <div class="contract-address">0x0e062be1E627032170340E982717137Ab3Ed5c0A</div>
+        <a href="https://basescan.org/address/0x0e062be1E627032170340E982717137Ab3Ed5c0A" target="_blank" class="link">🔍 View on BaseScan</a>
       </div>
       <div class="contract-card">
         <div class="contract-name">UniswapV4PoolCreator</div>
@@ -6225,7 +6225,7 @@ contract B0x_Mainnet {
 
    <script>
 
-    var customRPC = "https://base.llamarpc.com";
+    var customRPC = "https://mainnet.base.org";
 
 
 // Token addresses mapping
@@ -6234,7 +6234,7 @@ const tokenAddresses = {
 'B0x': '0x6B19E31C1813cD00b0d47d798601414b79A3e8AD',
 '0xBTC': '0xc4D4FD4F4459730d176844c170F2bB323c87Eb3B',
 'WETH': '0x4200000000000000000000000000000000000006',
-'RightsTo0xBTC': '0x2ffa14b113b0a598b07af6714f42dd75bddffd3e', //temp until mainnet fill in with actual token on launch
+'RightsTo0xBTC': '0x0e062be1E627032170340E982717137Ab3Ed5c0A', //temp until mainnet fill in with actual token on launch
 'USDC': '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913', //mainnet base USDC
 };
 
@@ -7229,7 +7229,7 @@ var hookAddresszz = "0x785319f8fCE23Cd733DE94Fd7f34b74A5cAa1000";
         tickSpacing: 60,
         hooks: hookAddresszz
     };
-
+    console.log("RightsTo0xBTC: ",tokenAddresses['RightsTo0xBTC']);
     const [R0xBTC0xbtcCurrency0, R0xBTC0xbtcCurrency1] = sortCurrencies(tokenAddresses['0xBTC'], tokenAddresses['RightsTo0xBTC']);
     const poolKeyR0xBTC0xBTC = {
         currency0: R0xBTC0xbtcCurrency0,
@@ -7275,7 +7275,8 @@ var hookAddresszz = "0x785319f8fCE23Cd733DE94Fd7f34b74A5cAa1000";
         const poolFees = {
             b0xEth: 0,
             oxbtcEth: 0,
-            b0xOxbtc: 0
+            b0xOxbtc: 0,
+            R0xBTC0xBTC: 0
         };
 
         // Decode result 1 - B0x/ETH
@@ -7352,7 +7353,7 @@ var hookAddresszz = "0x785319f8fCE23Cd733DE94Fd7f34b74A5cAa1000";
     console.log("Found .fee-valueR0xBTC0xBTC", feeValueSpanR0xBTC0xBTC);
     if (feeValueSpanR0xBTC0xBTC) {
         var listItem = feeValueSpanR0xBTC0xBTC.closest('li');
-        var curFeeR0xBTC0xBTC = poolsfee.b0xEth / 10000;
+        var curFeeR0xBTC0xBTC = poolsfee.R0xBTC0xBTC / 10000;
         feeValueSpanR0xBTC0xBTC.textContent = curFeeR0xBTC0xBTC + '%';
         if (listItem) {
             listItem.dataset.feeStart = curFeeR0xBTC0xBTC + '%';
@@ -7416,7 +7417,7 @@ var hookAddresszz = "0x785319f8fCE23Cd733DE94Fd7f34b74A5cAa1000";
 
         var link0xBTCETHz = "https://app.uniswap.org/positions/create/v4?currencyA=0xc4d4fd4f4459730d176844c170f2bb323c87eb3b&currencyB=NATIVE&chain=base&hook=0x785319f8fCE23Cd733DE94Fd7f34b74A5cAa1000&priceRangeState={%22priceInverted%22:false,%22fullRange%22:true,%22minPrice%22:%22%22,%22maxPrice%22:%22%22,%22initialPrice%22:%22%22}&depositState={%22exactField%22:%22TOKEN0%22,%22exactAmounts%22:{}}&fee={%22feeAmount%22:" + poolsfee.oxbtcEth +",%22tickSpacing%22:60,%22isDynamic%22:true}&step=1";
 
-        var linkR0xBTC0xBTCz = "https://app.uniswap.org/positions/create?currencyA=0xc4d4fd4f4459730d176844c170f2bb323c87eb3b&currencyB=0x2ffa14b113b0a598b07af6714f42dd75bddffd3e&chain=base&hook=0x785319f8fCE23Cd733DE94Fd7f34b74A5cAa1000&priceRangeState={%22priceInverted%22:false,%22fullRange%22:false,%22minPrice%22:%22%22,%22maxPrice%22:%22%22,%22initialPrice%22:%22%22,%22inputMode%22:%22price%22}&depositState={%22exactField%22:%22TOKEN0%22,%22exactAmounts%22:{}}&fee={%22feeAmount%22:" + poolsfee.R0xBTC0xBTC +",%22tickSpacing%22:60,%22isDynamic%22:true}&step=1";
+        var linkR0xBTC0xBTCz = "https://app.uniswap.org/positions/create?currencyA=0xc4d4fd4f4459730d176844c170f2bb323c87eb3b&currencyB=0x0e062be1E627032170340E982717137Ab3Ed5c0A&chain=base&hook=0x785319f8fCE23Cd733DE94Fd7f34b74A5cAa1000&priceRangeState={%22priceInverted%22:false,%22fullRange%22:false,%22minPrice%22:%22%22,%22maxPrice%22:%22%22,%22initialPrice%22:%22%22,%22inputMode%22:%22price%22}&depositState={%22exactField%22:%22TOKEN0%22,%22exactAmounts%22:{}}&fee={%22feeAmount%22:" + poolsfee.R0xBTC0xBTC +",%22tickSpacing%22:60,%22isDynamic%22:true}&step=1";
 
 
         const linkB0xETH = document.getElementById('uniswap-linkB0xETH');
