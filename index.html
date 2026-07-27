@@ -1768,6 +1768,7 @@ body {
         <a class="nav-subitem" data-page="how-to-swap" onclick="showPage('how-to-swap')">How to swap</a>
         <a class="nav-subitem" data-page="create-position" onclick="showPage('create-position')">How to create position in dapp</a>
         <a class="nav-subitem" data-page="how-to-stake" onclick="showPage('how-to-stake')">How to stake</a>
+        <a class="nav-subitem" data-page="how-to-timelock" onclick="showPage('how-to-timelock')">How to Timelock</a>
         <a class="nav-subitem" data-page="how-to-convert" onclick="showPage('how-to-convert')">How to convert</a>
         <a class="nav-subitem" data-page="side-pools" onclick="showPage('side-pools')">How to Supply Liquidity in Pools</a>
     
@@ -1788,6 +1789,7 @@ body {
         <a class="nav-subitem" data-page="univ4-hook" onclick="showPage('univ4-hook')">UniV4Hook</a>
         <a class="nav-subitem" data-page="hook-miner-contract" onclick="showPage('hook-miner-contract')">HookMiner</a>
         <a class="nav-subitem" data-page="pool-creator" onclick="showPage('pool-creator')">UniswapV4PoolCreator</a>
+        <a class="nav-subitem" data-page="timelock-contract" onclick="showPage('timelock-contract')">Timelock_b0x (Factory & Vault)</a>
     </div>
 </div>
 
@@ -2160,7 +2162,14 @@ body {
         <a href="https://etherscan.io/address/0xbCEaA05d2C153C3E961Fbae0640f58d968d9DDaD" target="_blank" class="link">🔍 View on Etherscan</a>
       </div>
 
-      
+      <div class="contract-card">
+        <div class="contract-name">Timelock Factory</div>
+        <div class="contract-description">TimeLockFactory — deploys a personal TimeLockVault per user to time-lock Uniswap v4 NFT positions and ERC-20s on Base Mainnet</div>
+        <div class="contract-address">0x66194F5527102ade749f9bE950A30cCCD9926B91</div>
+        <a href="https://basescan.org/address/0x66194F5527102ade749f9bE950A30cCCD9926B91" target="_blank" class="link">🔍 View on BaseScan</a>
+      </div>
+
+
                 </div>
             </div>
         </div>
@@ -3571,6 +3580,120 @@ await b0xContract.depositFromV1toV2(amount);</div>
             </div>
         </div>
     </div>
+
+    <!-- How to Timelock Guide -->
+    <div class="content-page" id="how-to-timelock">
+        <div class="content-header">
+            <h1 class="content-title">How to Timelock</h1>
+            <p class="content-description">
+                Lock a Uniswap v4 B0x/0xBTC LP position (or ERC-20 tokens) inside your own personal, permissionless timelock vault. Your position keeps earning LP staking rewards the entire time it's locked — you just can't touch it until the unlock time you chose has passed.
+            </p>
+        </div>
+
+        <div class="prerequisites-box">
+            <h3>Prerequisites</h3>
+            <p><strong>Base Ethereum Required:</strong> You need Base ETH to pay for gas fees.</p>
+            <p>If you don't have any Base ETH, go to <a href="#how-to-bridge" class="link" target="_blank">How to Bridge</a>.</p>
+            <p><strong>An Existing 0xBTC/B0x Uniswap v4 Position:</strong> You need a Uniswap v4 B0x/0xBTC LP NFT position before you can timelock it.</p>
+            <p>If you haven't created one yet, follow the <a href="#create-position" class="link" target="_blank">Create Position Guide</a> first. You do <strong>not</strong> need to stake it yourself beforehand — the vault stakes it into the LP pool for you as part of the timelock process.</p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Complete Timelock Process</h2>
+            <div class="section-content">
+
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Visit the Staking Timelock Page</h4>
+                        <p>Go to <a href="https://bzerox.org/?Timelock" class="link" target="_blank">https://bzerox.org/?Timelock</a></p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Connect Your Wallet</h4>
+                        <p>Connect your wallet using <span class="highlight">Rabby</span>, <span class="highlight">Metamask</span>, or <span class="highlight">WalletConnect</span>. Your eligible 0xBTC/B0x LP positions will load under "Eligible NFT Positions".</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Create a New Timelock Vault</h4>
+                        <p>Under "Create New Timelock Vault", pick an unlock date &amp; time. This deploys your own personal <span class="highlight">TimeLockVault</span> contract, immutably set to unlock at that exact timestamp — not even the vault owner can move it earlier.</p>
+                        <p>Click <strong>Create Timelock Vault</strong> and confirm the transaction.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Select Your New Vault</h4>
+                        <p>Your vault appears under "Your Timelock Vaults". Select it to open the Vault Action Panel.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4>Timelock (Stake) Your Position</h4>
+                        <p>Under "Stake NFT Into Vault", pick your position from the dropdown (or enter its token ID directly) and click <strong>Stake NFT to Vault</strong>.</p>
+                        <p>This approves the vault for your NFT, pulls it in, and the vault immediately delegates it into the B0x LP staking pool on your behalf — your position keeps earning B0x, 0xBTC, and WETH rewards for the entire lock period.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h4>(Optional) Deposit ERC-20 Tokens Too</h4>
+                        <p>You can also send B0x, 0xBTC, WETH, or any other ERC-20 straight into the same vault under "Deposit ERC-20 Token" — they're locked alongside your NFT until the same unlock time.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">7</div>
+                    <div class="step-content">
+                        <h4>Wait for It to Unlock</h4>
+                        <p>Use <strong>Refresh Status</strong> in the Vault Action Panel to check the countdown. While locked, every withdrawal function on the vault reverts with <code>StillLocked</code> — there is no early-exit or override, by design.</p>
+                        <p>Rewards you claim during the lock (via "Collect Rewards") land in the vault, not your wallet, so they stay time-locked too.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">8</div>
+                    <div class="step-content">
+                        <h4>Withdraw Everything After Unlock</h4>
+                        <p>Once the unlock time has passed, use whichever withdrawal tool fits:</p>
+                        <ul>
+                            <li><strong>Smart Contract Withdrawal:</strong> Unstakes and returns your NFTs (up to 20 at once) and claims/withdraws B0x, 0xBTC, and WETH rewards in one transaction.</li>
+                            <li><strong>Withdraw NFT:</strong> Unstakes and returns one specific NFT to your wallet.</li>
+                            <li><strong>Withdraw ERC-20 Token:</strong> Sends the vault's full balance of a chosen token back to you.</li>
+                        </ul>
+                        <p>All withdrawals — regardless of who submits the transaction — always send the vault's contents to the registered <strong>owner's</strong> wallet, never to the caller.</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <h3>Important Notes</h3>
+                    <ul>
+                        <li><strong>Unlock time is final:</strong> <code>unlockTime</code> is set once at vault creation and cannot be shortened or removed afterward.</li>
+                        <li><strong>Permissionless after unlock:</strong> Anyone can call the withdraw functions on your vault once it's unlocked (useful if you lose access to the exact dApp flow), but funds only ever go to the owner's wallet.</li>
+                        <li><strong>Masquerade mode is for helping others:</strong> The dApp's "Masquerade" tool lets you trigger withdrawals for someone else's already-unlocked vault using your own gas — it never lets you redirect their funds to yourself. Don't stake your own NFT while masquerading as someone else, since that deposits it into <em>their</em> vault, not yours.</li>
+                        <li><strong>Staking for someone else's vault costs a B0x fee:</strong> Only the vault owner can stake into their own vault for free — anyone else staking into it pays a small B0x fee, per the fee schedule described in the contract reference below.</li>
+                    </ul>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px; padding: 20px; background: #ecfdf5; border-radius: 8px;">
+                    <h4 style="color: #065f46; margin-bottom: 10px;">🎉 Congratulations!</h4>
+                    <p style="color: #047857;">Your position is now safely timelocked and earning rewards!</p>
+                    <p>For a full technical breakdown of the Factory and Vault contracts, see the <a href="#timelock-contract" class="link" target="_blank">Timelock_b0x Contract Reference</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
         <!-- All Contract Reference Pages -->
         <div class="content-page" id="b0x-mining-pow">
             <div class="content-header">
@@ -5676,6 +5799,358 @@ creator.createNewPool(b0xAddress, otherTokenAddress, deployedHook);
                 </div>
             </div>
         </div>
+
+<!-- Timelock_b0x Contract Reference Page -->
+<div class="content-page" id="timelock-contract">
+    <div class="content-header">
+        <h1>🔒 Timelock_b0x — TimeLockFactory &amp; TimeLockVault</h1>
+        <p>A factory/vault pair that lets any user deploy their own personal, immutable-unlock-time vault to hold Uniswap v4 B0x/0xBTC LP NFT positions and ERC-20 tokens, while the NFT keeps earning LP staking rewards for the entire lock duration.</p>
+    </div>
+
+    <div class="launch-info">
+        <h3>🎯 Contract Overview</h3>
+        <div class="info-item">
+            <span class="info-label">Purpose:</span>
+            <span class="info-value">Personal, permissionless-withdraw timelock vaults for Uniswap v4 LP positions and ERC-20s</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Architecture:</span>
+            <span class="info-value">One TimeLockFactory deploys one TimeLockVault per user per call to createVault()</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Locked Position Continues Earning:</span>
+            <span class="info-value">Vault delegates the NFT to the same B0x LP staking pool used elsewhere on the site</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Solidity Version:</span>
+            <span class="info-value">^0.8.20</span>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h2>📋 Contract Information</h2>
+            <div class="info-item">
+                <span class="info-label">Network:</span>
+                <span class="network-badge">Base Mainnet</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">TimeLockFactory:</span>
+                <span class="info-value">
+                    <div class="address">0x66194F5527102ade749f9bE950A30cCCD9926B91</div>
+                </span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Uniswap V4 NFT Manager:</span>
+                <span class="info-value">
+                    <div class="address">0x7C5f5A4bBd8fD63184577525326123B519429bDc</div>
+                </span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">LP Staking Pool:</span>
+                <span class="info-value">
+                    <div class="address">0x08f489C5017942d3b7c82C1c178877C80492c948</div>
+                </span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">B0x Token:</span>
+                <span class="info-value">
+                    <div class="address">0x6B19E31C1813cD00b0d47d798601414b79A3e8AD</div>
+                </span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">0xBitcoin Token:</span>
+                <span class="info-value">
+                    <div class="address">0xc4D4FD4F4459730d176844c170F2bB323c87Eb3B</div>
+                </span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">WETH:</span>
+                <span class="info-value">
+                    <div class="address">0x4200000000000000000000000000000000000006</div>
+                </span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Proof-of-Work Burn Address:</span>
+                <span class="info-value">
+                    <div class="address">0xd44Ee7dAdbF50214cA7009a29D9F88BCcD0E9Ff4</div>
+                </span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">StateView (v4 pool reads):</span>
+                <span class="info-value">
+                    <div class="address">0xA3c0c9b65baD0b08107Aa264b0f3dB444b867A71</div>
+                </span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🏭 TimeLockFactory — Core Functions</h2>
+            <div class="function-list">
+                <div class="function-item">
+                    <span class="function-name">createVault(uint256 unlockTime) returns (address vault)</span><br>
+                    Deploys a new TimeLockVault owned by the caller. <code>unlockTime</code> must be strictly in the future; creation itself is free and unrestricted, so vault spam is expected and handled via O(1) bookkeeping rather than prevented.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">getVaults(address user, uint256 start, uint256 count)</span><br>
+                    Paginated read of a user's vault addresses; <code>count</code> is clamped to <code>MAX_PAGE_SIZE</code> (100).
+                </div>
+                <div class="function-item">
+                    <span class="function-name">getVaultCount(address user)</span><br>
+                    O(1) length of a user's vault list — use to compute pagination bounds.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">getVaultsB0xShares(address user, uint256 start, uint256 count)</span><br>
+                    Paginated vault addresses + each vault's B0x-denominated share of LP staking.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">getVaultsBTCShares(address user, uint256 start, uint256 count)</span><br>
+                    Same as above but for the 0xBTC-denominated share.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">SuperWithdrawer(address[] vaults, uint256[][] tokenIds, IERC20[][] rewardTokens)</span><br>
+                    Batch-calls <code>withdraw_Multiple_NFTs_And_ERC20s</code> across many vaults in one transaction; each call is wrapped in try/catch so one failing vault never blocks the rest.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">SuperDestroyer(address[] vaults)</span><br>
+                    Batch-attempts <code>DESTROY_VAULT_FOREVER()</code> across vaults the caller owns; skips any vault that isn't owned by the caller or that fails its unlock/debt checks.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🔐 TimeLockVault — Core Functions</h2>
+            <div class="function-list">
+                <div class="function-item">
+                    <span class="function-name">stakeUniswapV4NFT(uint256 tokenId)</span><br>
+                    Pulls the NFT into the vault (if not already held), approves the LP pool, and delegates the stake — rewards accrue to the vault while locked. If the caller is <strong>not</strong> the owner, a B0x fee (the gap between <code>AmountWeOWE_PER_POSITION2</code> and the newly staked B0x value) is pulled from the caller via <code>transferFrom</code>.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">withdrawNFT(uint256 tokenId)</span><br>
+                    <code>afterUnlock</code> only. Unstakes from the LP pool if needed, then transfers the NFT to the owner.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">withdraw_Multiple_NFTs_And_ERC20s(uint256[] tokenIds, IERC20[] rewardTokens)</span><br>
+                    <code>afterUnlock</code> only. Loops <code>withdrawNFT</code> per token ID inside a try/catch (one bad ID can't revert the batch), wraps any held ETH to WETH, then claims and sweeps the given reward tokens to the owner.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">withdrawToken(address token)</span><br>
+                    <code>afterUnlock</code> only. Sends the vault's full balance of <code>token</code> to the owner; reverts with <code>TransferFailed</code> on a non-standard <code>false</code> return.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">exitAllTogether(uint startIndex, uint count, address[] additionalERC20s)</span><br>
+                    <code>afterUnlock</code> only, callable by <strong>anyone</strong> — not owner-gated. Exits staked positions via the LP pool and sweeps BZRX/0xBTC/WETH plus any extra token addresses. All swept funds always go to the owner regardless of who calls it.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">transferOwnership(address newOwner)</span><br>
+                    <code>onlyOwner</code>, only while still locked. Notifies the factory via <code>recordOwnershipTransfer</code>, which pulls a computed BZRX debt amount from the old owner — <code>newOwner</code> must have approved the factory beforehand.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">DESTROY_VAULT_FOREVER()</span><br>
+                    <code>afterUnlock</code>, owner or factory only. Irreversibly hands the vault to the B0x Proof-of-Work burn address — see the Vault Destruction card below for the guard conditions.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">getRewards() / getRewardForTokensContract(IERC20[] tokens)</span><br>
+                    Claims LP staking rewards into the vault (not the caller) — claimed rewards remain time-locked with everything else.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">wrapETHtoWETH()</span><br>
+                    Callable by anyone at any time; wraps whatever ETH balance the vault currently holds into WETH.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🔍 View Helpers</h2>
+            <div class="function-list">
+                <div class="function-item">
+                    <span class="function-name">isLocked()</span><br>
+                    Returns true while <code>block.timestamp &lt; unlockTime</code>.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">secondsUntilUnlock()</span><br>
+                    Seconds remaining until unlock, or 0 if already unlocked.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">getStakedTokenIds() / stakedTokenCount() / stakedTokenIdAt(index)</span><br>
+                    Enumerate the NFTs this vault currently has staked.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">getStakedTokenIdsPaged(uint256 offset, uint256 limit)</span><br>
+                    Paginated staked-ID reads for vaults holding a large number of positions.
+                </div>
+            </div>
+
+            <h3>Modifiers</h3>
+            <div class="info-item">
+                <span class="info-label">onlyOwner:</span>
+                <span class="info-value">msg.sender must equal owner</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">onlyOwnerorFactory:</span>
+                <span class="info-value">msg.sender must equal owner or the factory</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">afterUnlock:</span>
+                <span class="info-value">reverts StillLocked(unlockTime, currentTime) if still locked</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>⏱️ Immutable Unlock Design</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">Immutable</div>
+                    <div class="stat-label">unlockTime (set once in constructor)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">1 : Many</div>
+                    <div class="stat-label">One Factory, many per-user Vaults</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">No Override</div>
+                    <div class="stat-label">No admin/emergency early-unlock path</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">Rewards Stay Locked</div>
+                    <div class="stat-label">Claimed rewards land in the vault, not the wallet</div>
+                </div>
+            </div>
+            <p>The constructor requires <code>_unlockTime &gt; block.timestamp</code> and stores it as an <code>immutable</code> — there is no function anywhere in the vault that can shorten, extend, or bypass it. The only two ways assets ever leave before that timestamp are <code>transferOwnership</code> (handing the whole vault, still locked, to a new owner) or a genuine unstake event routed back from the LP pool via <code>onERC721Received</code>.</p>
+        </div>
+
+        <div class="card">
+            <h2>💸 Dynamic Fee Schedule (AmountWeOWE_PER_POSITION2)</h2>
+            <p>Staking <em>your own</em> NFT into <em>your own</em> vault is always free. Staking on behalf of someone else's vault, and the debt tracked on ownership transfer/destruction, are priced against a live B0x/USD read so the fee doesn't become stale as price moves.</p>
+            <div class="info-item">
+                <span class="info-label">Base Value:</span>
+                <span class="info-value">50 B0x while B0x/USD price ≤ $4,000 (AmountWeOWE_PER_POSITION_Constant)</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Step Schedule:</span>
+                <span class="info-value">Each time price crosses a doubling threshold, the required amount is multiplied by 2/3 (until it drops under 0.2 tokens, then halved instead)</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Floor:</span>
+                <span class="info-value">Never returns less than 0.0000001 B0x, capped at 50 iterations</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Price Source:</span>
+                <span class="info-value">getPriceOFB0xINUSD() = ETH/USDC v3 pool slot0 combined with B0x/ETH v4 pool StateView.getSlot0()</span>
+            </div>
+            <h3>Governance: 4-Checkpoint, 46-Hour Gate</h3>
+            <p><code>setAmountWeOwePerPosition()</code> can only commit a new <code>AmountWeOWE_PER_POSITION2</code> value after the freshly computed <code>queryRequiredB0xAmount()</code> has been confirmed <strong>4 separate times</strong>, each at least <strong>46 hours</strong> apart, with the computed value staying identical the whole time (minimum ~96+ hours end-to-end). Any call where the value changes mid-sequence, or already matches the committed value, resets the sequence to zero — a manipulated price spike has to be sustained for days, with zero reversions, to ever take effect.</p>
+        </div>
+
+        <div class="card">
+            <h2>🔥 Vault Destruction (DESTROY_VAULT_FOREVER)</h2>
+            <p>A one-way, <code>afterUnlock</code>-gated call that hands the vault's ownership to the fixed B0x Proof-of-Work burn address (<code>0xd44Ee7dAdbF50214cA7009a29D9F88BCcD0E9Ff4</code>) — a destination with no known private key. Callable by the owner or the factory.</p>
+            <ul class="feature-list">
+                <li><strong>Staking debt check:</strong> If the vault still has an LP staking balance, its per-position B0x debt metric (computed via <code>MulDiv</code> against the pool's totals, position count clamped to [1, 20]) must be under <code>AmountWeOWE_PER_POSITION2 / 4</code> (12.5 B0x at the default rate).</li>
+                <li><strong>Dust reward check:</strong> Claims any outstanding BZRX rewards first, then requires the resulting BZRX balance to be under <code>AmountWeOWE_PER_POSITION2 / 20</code> (2.5 B0x at the default rate) — prevents griefing the destroy path with a dust balance.</li>
+                <li><strong>Not checked:</strong> Whether all staked NFTs have already been withdrawn — callers must verify <code>stakedTokenCount() == 0</code> themselves, or staked NFTs can become unrecoverable once ownership passes to the burn address.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>👥 Masquerade / Permissionless Model</h2>
+            <ul class="feature-list">
+                <li><strong>Anyone can withdraw after unlock:</strong> <code>withdrawToken</code>, <code>withdrawNFT</code>, <code>withdraw_Multiple_NFTs_And_ERC20s</code>, and <code>exitAllTogether</code> have no owner check — but every one of them sends assets to the vault's registered <code>owner</code>, never to <code>msg.sender</code>.</li>
+                <li><strong>Anyone can stake for you:</strong> <code>stakeUniswapV4NFT</code> lets a non-owner deposit and stake an NFT into someone else's vault, paying a live-priced B0x fee for the privilege.</li>
+                <li><strong>Ownership handoff pulls debt:</strong> <code>transferOwnership</code> (owner-only, still-locked-only) has the factory pull a computed BZRX amount from the <em>old</em> owner as part of the transfer, so the old owner must pre-approve the factory.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>🧮 MulDiv &amp; Price Oracle</h2>
+            <div class="function-list">
+                <div class="function-item">
+                    <span class="function-name">MulDiv.mulDiv(x, y, denominator)</span><br>
+                    512-bit-precision floor(x*y/denominator), Uniswap/OpenZeppelin-style — used everywhere a staking share or price needs to be computed without overflowing at 256 bits.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">getETHUSDC_PricePrecise()</span><br>
+                    Reads <code>slot0()</code> on the WETH/USDC Uniswap v3 pool to get ETH's USD price.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">getETHB0x_PricePrecise()</span><br>
+                    Reads <code>StateView.getSlot0(POOL_ID)</code> on the B0x/ETH Uniswap v4 pool (v4 pools have no standalone pool contract to call directly).
+                </div>
+                <div class="function-item">
+                    <span class="function-name">getPriceOFB0xINUSD()</span><br>
+                    Combines both reads into a single B0x/USD price, feeding <code>queryRequiredB0xAmount()</code>'s step schedule.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📡 Events &amp; Errors</h2>
+            <h3>Vault Events</h3>
+            <div class="function-list">
+                <div class="function-item"><span class="function-name">TokenDeposited(address indexed token, address indexed from, uint256 amount)</span></div>
+                <div class="function-item"><span class="function-name">TokenWithdrawn(address indexed token, address indexed to, uint256 amount)</span></div>
+                <div class="function-item"><span class="function-name">NFTStaked(uint256 indexed tokenId, address indexed from)</span></div>
+                <div class="function-item"><span class="function-name">NFTWithdrawn(uint256 indexed tokenId, address indexed to)</span></div>
+                <div class="function-item"><span class="function-name">NFTWithdrawnSpecial(uint256 indexed tokenId, address indexed to, address NFTManager, address LiquidityPool)</span></div>
+                <div class="function-item"><span class="function-name">OwnershipTransferred(address oldOwner, address newOwner)</span></div>
+            </div>
+            <h3>Factory Events</h3>
+            <div class="function-list">
+                <div class="function-item"><span class="function-name">VaultCreated(address indexed owner, address indexed vault, uint256 unlockTime)</span></div>
+                <div class="function-item"><span class="function-name">VaultOwnershipTransfered(address indexed vault, address indexed oldOwner, address indexed newOwner)</span></div>
+            </div>
+            <h3>Custom Errors</h3>
+            <div class="function-list">
+                <div class="function-item"><span class="function-name">NotOwner() / StillLocked(uint256 unlockTime, uint256 currentTime)</span></div>
+                <div class="function-item"><span class="function-name">NFTAlreadyStaked(uint256 tokenId) / NFTNotStaked(uint256 tokenId)</span></div>
+                <div class="function-item"><span class="function-name">ZeroAmount() / TransferFailed()</span></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>⚙️ Usage Examples</h2>
+            <h3>Create a Vault</h3>
+            <div class="code-block2">
+// Deploy a personal vault unlocking 30 days from now
+uint256 unlockTime = block.timestamp + 30 days;
+address vault = factory.createVault(unlockTime);
+            </div>
+
+            <h3>Timelock Your Own Position (Free)</h3>
+            <div class="code-block2">
+// Owner path — no B0x fee charged
+nftManager.approve(vault, tokenId);
+TimeLockVault(vault).stakeUniswapV4NFT(tokenId);
+            </div>
+
+            <h3>Withdraw After Unlock</h3>
+            <div class="code-block2">
+// Reverts with StillLocked before unlockTime
+TimeLockVault(vault).withdrawNFT(tokenId);
+TimeLockVault(vault).withdrawToken(BZEROX_ADDRESS);
+            </div>
+
+            <h3>Exit Everything In One Call</h3>
+            <div class="code-block2">
+// Callable by anyone once unlocked; funds always go to the owner
+TimeLockVault(vault).exitAllTogether(0, 25, new address[](0));
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🛡️ Security Model</h2>
+            <ul class="feature-list">
+                <li><strong>Immutable unlock:</strong> <code>unlockTime</code> and <code>factory</code> are set once in the constructor and can never change.</li>
+                <li><strong>O(1) bookkeeping:</strong> Both the vault's staked-token set and the factory's per-owner vault list use a swap-and-pop array with an index+1 sentinel mapping, so removal cost never scales with list size — important since anyone can cheaply inflate another address's vault list via create + transfer spam.</li>
+                <li><strong>Pagination caps:</strong> <code>getVaults</code>, <code>getVaultsB0xShares</code>, and <code>getVaultsBTCShares</code> all clamp <code>count</code> to <code>MAX_PAGE_SIZE</code> (100), preventing an unbounded-read griefing vector against inflated vault lists.</li>
+                <li><strong>Vault authenticity checks:</strong> <code>recordOwnershipTransfer</code> and <code>DestroyOwnership_TransferToDEADEND</code> both require <code>_isVault[msg.sender]</code> and <code>msg.sender == vault</code>, so only a genuine factory-deployed vault can rewrite factory bookkeeping.</li>
+                <li><strong>Burn destination is fixed:</strong> <code>DestroyOwnership_TransferToDEADEND</code> requires <code>newOwner == Proof_OF_Work_B0x</code> — it can never route ownership anywhere else.</li>
+                <li><strong>Batch isolation:</strong> <code>withdraw_Multiple_NFTs_And_ERC20s</code>, <code>SuperWithdrawer</code>, and <code>SuperDestroyer</code> all wrap per-item calls in try/catch so one bad token ID or uncooperative vault can't block the rest of the batch.</li>
+                <li><strong>Owner-directed funds:</strong> Even the functions with no owner check (<code>exitAllTogether</code>, the withdrawal trio) hard-code the destination as <code>owner</code>, never <code>msg.sender</code> — permissionless calling, not permissionless payout.</li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <!-- HookMiner Protocol Page --><!-- HookMiner Protocol Page: Enhanced with Dynamic Fee Details -->
 <div class="content-page" id="hook-address">
