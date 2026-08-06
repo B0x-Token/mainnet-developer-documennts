@@ -1743,6 +1743,8 @@ body {
         <a class="nav-subitem" data-page="conversion" onclick="showPage('conversion')">B0x ↔ 0xBitcoin Conversion</a>
         <a class="nav-subitem" data-page="rights-token" onclick="showPage('rights-token')">RightsTo0xBitcoin Token</a>
         <a class="nav-subitem" data-page="oxbitcoin-token" onclick="showPage('oxbitcoin-token')">0xBitcoin Token</a>
+        <a class="nav-subitem" data-page="timelock-design" onclick="showPage('timelock-design')">Timelock</a>
+        <a class="nav-subitem" data-page="guess-design" onclick="showPage('guess-design')">B0x Guess</a>
     </div>
 </div>
 
@@ -1947,6 +1949,121 @@ body {
                         Miners compete to solve cryptographic puzzles by finding nonces that produce hash values meeting 
                         the current difficulty target. Successful miners receive newly minted B0x tokens as rewards. 
 						The Uniswap v4 Liquidity Staking Contract also recieves 1:1 what miners make.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timelock Protocol Design Page -->
+        <div class="content-page" id="timelock-design">
+            <div class="content-header">
+                <h1 class="content-title">Timelock</h1>
+                <p class="content-description">
+                    A permissionless factory/vault design that lets any user lock a Uniswap v4 B0x/0xBTC LP position, ERC-20s, and a B0x Guess bankroll stake behind an immutable, self-chosen unlock time — while every locked asset keeps earning as if it were never locked at all.
+                </p>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Factory / Vault Architecture</h2>
+                <div class="section-content">
+                    <p>
+                        One <strong>TimeLockFactory</strong> deploys one lightweight <strong>TimeLockVault</strong> per call to <code>createVault(unlockTime)</code>, owned by whoever called it.
+                        Splitting the design this way — a single factory, many independent vaults — means a bug or drained approval in one vault can never touch another user's assets, and lets the factory offer batch helpers (<code>SuperWithdrawer</code>, <code>SuperDestroyer</code>, <code>SuperGuessDepositor</code>) across many vaults in one transaction without ever holding custody itself.
+                    </p>
+                    <h3>Design Goals</h3>
+                    <ul>
+                        <li><strong>Immutable commitment:</strong> <code>unlockTime</code> is set once in the constructor and stored as <code>immutable</code> — there is no admin key, pause switch, or emergency path that can move it earlier, anywhere in the contract.</li>
+                        <li><strong>Assets stay productive while locked:</strong> the vault doesn't just hold the LP NFT — it delegates it into the same Uniswap v4 LP staking pool used everywhere else on the site, so rewards keep accruing for the full lock duration.</li>
+                        <li><strong>Locking shouldn't mean idle capital:</strong> a vault also carries its own position in the shared B0x Guess bankroll, so B0x sitting in a vault can be staked into Guess and keep earning, timelocked right alongside the rest.</li>
+                        <li><strong>Permissionless payout, not permissionless custody:</strong> withdrawal-triggering functions (<code>withdrawToken</code>, <code>withdrawNFT</code>, <code>exitAllTogether</code>) are callable by anyone once unlocked, but every one of them hard-codes the destination as the vault's registered owner — letting bots or helpers trigger cleanup without ever being able to redirect funds.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Anti-Griefing &amp; Fee Design</h2>
+                <div class="section-content">
+                    <p>
+                        Because vault creation is free and unrestricted, the design assumes vault-list spam is normal rather than trying to prevent it: both the factory's per-owner vault list and each vault's staked-token set use a swap-and-pop array with an index+1 sentinel, so lookups and removals stay O(1) no matter how many vaults or tokens pile up, and paginated reads (<code>getVaults</code>, <code>getVaultsB0xShares</code>) are clamped to a 100-item page to block unbounded-read griefing.
+                    </p>
+                    <p>
+                        Staking your own NFT into your own vault is always free. Staking on someone else's vault charges a live-priced B0x fee, computed against a combined Uniswap v3 ETH/USDC and v4 B0x/ETH price read so the fee tracks USD value rather than a stale token amount. That price feed only takes effect for governance after it has been independently confirmed <strong>4 times, each at least 46 hours apart</strong> — a manipulated spike would have to hold steady, without a single reversion, for 96+ hours to ever move the fee.
+                    </p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Exit Design: Withdrawal &amp; Destruction</h2>
+                <div class="section-content">
+                    <p>
+                        Ordinary withdrawal only ever unlocks at the immutable <code>unlockTime</code>; the only two ways assets can move earlier are <code>transferOwnership</code> (handing the still-locked vault to a new owner, who must pre-approve the factory to cover a computed debt) or a genuine unstake routed back from the LP pool.
+                    </p>
+                    <p>
+                        <code>DESTROY_VAULT_FOREVER()</code> doesn't transfer the vault's ownership anywhere — the vault's <code>owner</code> stays exactly as it was, at the last real owner. What it permanently removes is the factory's own reference to the vault: once called, the factory stops recognizing/tracking it, severing it from factory-side bookkeeping and batch helpers for good. It's gated on the vault carrying only dust-level staking debt and dust-level unclaimed rewards, so the path can't be used to silently strand meaningful value; it does not, however, check that staked NFTs have already been withdrawn, so callers must confirm that themselves first.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- B0x Guess Protocol Design Page -->
+        <div class="content-page" id="guess-design">
+            <div class="content-header">
+                <h1 class="content-title">B0x Guess</h1>
+                <p class="content-description">
+                    A provably-fair, staked-bankroll number-guessing game: players wager B0x on a guess between 1 and 97, a Chainlink VRF v2.5 roll between 0 and 99 decides the outcome, and the house side is a permissionless, share-based B0x staking pool rather than a single operator's balance sheet.
+                </p>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Game &amp; Payout Design</h2>
+                <div class="section-content">
+                    <p>
+                        A guess wins if the Chainlink-supplied random roll lands below it, so lower guesses carry worse odds but pay out more per B0x wagered, and higher guesses are safer but pay less — the tradeoff is continuous rather than a fixed set of bet types.
+                    </p>
+                    <h3>Bankroll-Aware Payout Scaling</h3>
+                    <p>
+                        Rather than paying full theoretical odds regardless of size, the payout multiplier scales down as a bet grows relative to the bankroll (the bankroll-to-bet ratio), so a thin bankroll automatically pays a smaller fraction of theoretical odds on an outsized bet instead of risking insolvency:
+                    </p>
+                    <ul>
+                        <li>Ratio &lt; 30 → 90% of theoretical odds, rising in steps</li>
+                        <li>Ratio &lt; 100 → 96%, Ratio &lt; 400 → 99%</li>
+                        <li>Ratio ≥ 1000 → 99% (settles just under the theoretical maximum)</li>
+                    </ul>
+                    <p>
+                        This makes the bankroll self-protecting by construction — no bet-size cap needs to be hand-tuned, because the odds themselves get worse as a bet threatens a larger share of the pool.
+                    </p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Staking / Bankroll Design</h2>
+                <div class="section-content">
+                    <p>
+                        Anyone can stake B0x into the bankroll and mint shares proportional to the pool's current value, becoming the house for a slice of every future bet. <code>withdraw()</code> burns shares for B0x minus a 2.5% fee, and is deliberately blocked whenever the outstanding penalty — the sum of winnings currently owed across unresolved bets — exceeds the caller's declared <code>maxLoss</code> tolerance. That guard exists so a run of guesser wins can't be used to drain stakers out from under bets the pool still owes; a staker experiencing a losing streak sees their share value fall in real time, exactly the same as any liquidity provider absorbing adverse flow.
+                    </p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Randomness &amp; Fairness Design</h2>
+                <div class="section-content">
+                    <p>
+                        Every bet is resolved by a real Chainlink VRF v2.5 request, paid for in LINK at request time rather than trusting an operator-supplied number. Bets resolve strictly <strong>FIFO</strong> — in the order placed, not the order VRF callbacks happen to arrive — so resolution order can't be gamed by a miner or relayer reordering callback delivery.
+                    </p>
+                    <p>
+                        A public <code>getBlank()</code> safety valve lets anyone pay for an extra VRF request if fulfillment ever seems stuck, so the FIFO queue can't be permanently jammed by one slow request. Larger bets (20×+ the baseline position size) qualify for a LINK rebate toward their own request cost, subsidizing the randomness fee for the players contributing the most bankroll turnover.
+                    </p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Price-Adaptive Position Sizing</h2>
+                <div class="section-content">
+                    <p>
+                        The baseline bet/position size is denominated in USD terms, not a fixed B0x amount: it's derived from a combined Uniswap v3 ETH/USDC and v4 B0x/ETH price read, and halves each time B0x's USD price doubles, so bet sizes stay meaningful in real terms as price moves instead of drifting into irrelevance or becoming punitive.
+                    </p>
+                    <p>
+                        As with the Timelock fee schedule, updates to this baseline are permissionless but governed by the same 4-checkpoint, 46-hours-apart confirmation gate — a manipulated price would need to hold, unreverted, for 96+ hours before it ever changes a live bet size.
                     </p>
                 </div>
             </div>
@@ -6163,7 +6280,7 @@ creator.createNewPool(b0xAddress, otherTokenAddress, deployedHook);
                 </div>
                 <div class="function-item">
                     <span class="function-name">DESTROY_VAULT_FOREVER()</span><br>
-                    <code>afterUnlock</code>, owner or factory only. Irreversibly hands the vault to the B0x Proof-of-Work burn address — see the Vault Destruction card below for the guard conditions.
+                    <code>afterUnlock</code>, owner or factory only. Irreversibly deregisters the vault from the factory — <code>owner</code> itself is unchanged — see the Vault Destruction card below for the guard conditions.
                 </div>
                 <div class="function-item">
                     <span class="function-name">getRewards() / getRewardForTokensContract(IERC20[] tokens)</span><br>
@@ -6299,11 +6416,11 @@ creator.createNewPool(b0xAddress, otherTokenAddress, deployedHook);
 
         <div class="card">
             <h2>🔥 Vault Destruction (DESTROY_VAULT_FOREVER)</h2>
-            <p>A one-way, <code>afterUnlock</code>-gated call that hands the vault's ownership to the fixed B0x Proof-of-Work burn address (<code>0xd44Ee7dAdbF50214cA7009a29D9F88BCcD0E9Ff4</code>) — a destination with no known private key. Callable by the owner or the factory.</p>
+            <p>A one-way, <code>afterUnlock</code>-gated call that permanently deregisters the vault from the factory's bookkeeping — it does <strong>not</strong> change the vault's <code>owner</code>, which stays exactly as it was at the last real owner. Callable by the owner or the factory.</p>
             <ul class="feature-list">
                 <li><strong>Staking debt check:</strong> If the vault still has an LP staking balance, its per-position B0x debt metric (computed via <code>MulDiv</code> against the pool's totals, position count clamped to [1, 20]) must be under <code>AmountWeOWE_PER_POSITION2 / 4</code> (12.5 B0x at the default rate).</li>
                 <li><strong>Dust reward check:</strong> Claims any outstanding BZRX rewards first, then requires the resulting BZRX balance to be under <code>AmountWeOWE_PER_POSITION2 / 20</code> (2.5 B0x at the default rate) — prevents griefing the destroy path with a dust balance.</li>
-                <li><strong>Not checked:</strong> Whether all staked NFTs have already been withdrawn — callers must verify <code>stakedTokenCount() == 0</code> themselves, or staked NFTs can become unrecoverable once ownership passes to the burn address.</li>
+                <li><strong>Not checked:</strong> Whether all staked NFTs have already been withdrawn — callers must verify <code>stakedTokenCount() == 0</code> themselves, or staked NFTs can become unrecoverable once the vault is deregistered from the factory.</li>
             </ul>
         </div>
 
@@ -6400,7 +6517,7 @@ TimeLockVault(vault).exitAllTogether(0, 25, new address[](0));
                 <li><strong>O(1) bookkeeping:</strong> Both the vault's staked-token set and the factory's per-owner vault list use a swap-and-pop array with an index+1 sentinel mapping, so removal cost never scales with list size — important since anyone can cheaply inflate another address's vault list via create + transfer spam.</li>
                 <li><strong>Pagination caps:</strong> <code>getVaults</code>, <code>getVaultsB0xShares</code>, and <code>getVaultsBTCShares</code> all clamp <code>count</code> to <code>MAX_PAGE_SIZE</code> (100), preventing an unbounded-read griefing vector against inflated vault lists.</li>
                 <li><strong>Vault authenticity checks:</strong> <code>recordOwnershipTransfer</code> and <code>DestroyOwnership_TransferToDEADEND</code> both require <code>_isVault[msg.sender]</code> and <code>msg.sender == vault</code>, so only a genuine factory-deployed vault can rewrite factory bookkeeping.</li>
-                <li><strong>Burn destination is fixed:</strong> <code>DestroyOwnership_TransferToDEADEND</code> requires <code>newOwner == Proof_OF_Work_B0x</code> — it can never route ownership anywhere else.</li>
+                <li><strong>Destroy target is fixed:</strong> <code>DestroyOwnership_TransferToDEADEND</code> requires <code>newOwner == Proof_OF_Work_B0x</code> — but this only fixes where the factory records the vault as deregistered to; the vault's own <code>owner</code> variable is untouched and stays at the last real owner.</li>
                 <li><strong>Batch isolation:</strong> <code>withdraw_Multiple_NFTs_And_ERC20s</code>, <code>SuperWithdrawer</code>, <code>SuperDestroyer</code>, and <code>SuperGuessDepositor</code> all wrap per-item calls in try/catch so one bad token ID or uncooperative vault can't block the rest of the batch.</li>
                 <li><strong>Owner-directed funds:</strong> Even the functions with no owner check (<code>exitAllTogether</code>, the withdrawal trio) hard-code the destination as <code>owner</code>, never <code>msg.sender</code> — permissionless calling, not permissionless payout.</li>
                 <li><strong>GuessDepoCaller cannot withdraw:</strong> <code>stakeVaultB0xGuess</code>/<code>stakeVaultMaxAndRewards</code> only move B0x already inside the vault into B0x Guess; nothing gated on <code>onlyOwnerorGuessDepoCallerorFactory</code> can send funds anywhere but deeper into the vault's own staking position.</li>
