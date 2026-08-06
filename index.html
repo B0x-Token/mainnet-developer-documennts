@@ -1771,6 +1771,7 @@ body {
         <a class="nav-subitem" data-page="how-to-timelock" onclick="showPage('how-to-timelock')">How to Timelock</a>
         <a class="nav-subitem" data-page="how-to-convert" onclick="showPage('how-to-convert')">How to convert</a>
         <a class="nav-subitem" data-page="side-pools" onclick="showPage('side-pools')">How to Supply Liquidity in Pools</a>
+        <a class="nav-subitem" data-page="how-to-guess" onclick="showPage('how-to-guess')">How to use B0x Guess</a>
     
     </div>
 </div>
@@ -1790,6 +1791,7 @@ body {
         <a class="nav-subitem" data-page="hook-miner-contract" onclick="showPage('hook-miner-contract')">HookMiner</a>
         <a class="nav-subitem" data-page="pool-creator" onclick="showPage('pool-creator')">UniswapV4PoolCreator</a>
         <a class="nav-subitem" data-page="timelock-contract" onclick="showPage('timelock-contract')">Timelock_b0x (Factory & Vault)</a>
+        <a class="nav-subitem" data-page="b0xguess-contract" onclick="showPage('b0xguess-contract')">B0xGuess</a>
     </div>
 </div>
 
@@ -2165,10 +2167,16 @@ body {
       <div class="contract-card">
         <div class="contract-name">Timelock Factory</div>
         <div class="contract-description">TimeLockFactory — deploys a personal TimeLockVault per user to time-lock Uniswap v4 NFT positions and ERC-20s on Base Mainnet</div>
-        <div class="contract-address">0x66194F5527102ade749f9bE950A30cCCD9926B91</div>
-        <a href="https://basescan.org/address/0x66194F5527102ade749f9bE950A30cCCD9926B91" target="_blank" class="link">🔍 View on BaseScan</a>
+        <div class="contract-address">0xff054C399444d64bD772Ca4Efe71C6449E08C955</div>
+        <a href="https://basescan.org/address/0xff054C399444d64bD772Ca4Efe71C6449E08C955" target="_blank" class="link">🔍 View on BaseScan</a>
       </div>
 
+      <div class="contract-card">
+        <div class="contract-name">B0xGuess</div>
+        <div class="contract-description">Provably-fair number-guessing game staking B0x as the house bankroll, resolved by Chainlink VRF v2.5, on Base Mainnet</div>
+        <div class="contract-address">0x57da35b42B97908255D5B1655DaC6ed936fc3668</div>
+        <a href="https://basescan.org/address/0x57da35b42B97908255D5B1655DaC6ed936fc3668" target="_blank" class="link">🔍 View on BaseScan</a>
+      </div>
 
                 </div>
             </div>
@@ -2652,10 +2660,10 @@ body {
                     </div>
 
                     <div class="bridge-links">
-                       <a href="https://jumper.exchange/?fromChain=8453&toChain=8453&toToken=0x0000000000000000000000000000000000000000" target="_blank" class="bridge-btn">
+                       <a href="https://jumper.xyz/?fromChain=1&fromToken=0x0000000000000000000000000000000000000000&toChain=8453&toToken=0x0000000000000000000000000000000000000000" target="_blank" class="bridge-btn">
                             🚰 Get Base Ethereum Easily Here
                         </a>
-                        <a href="https://superbridge.app/base" target="_blank" class="bridge-btn">
+                        <a href="https://timelock.bzerox.org/?bridge&dir=toBase&asset=ETH" target="_blank" class="bridge-btn">
                             🌉 Bridge to Base Here Also
                         </a>
                     </div>
@@ -2997,7 +3005,7 @@ body {
             <div class="prerequisites-box">
                     <h3>Prerequisites</h3>
                     <p><strong>Base Ethereum Required:</strong> You need Ethereum to pay for gas fees and to bridge to Base</p>
-                    <p>If you don't have any Base ETH, go to how to bridge <a href="#how-to-bridge" class="link" target="_blank">How to Bridge</a>.</p>
+                    <p>If you don't have any Base ETH, go to how to bridge <a href="#how-to-bridge" class="link">How to Bridge</a>.</p>
                 <p><strong>Uniswap v4 Position created in dapp:</strong> You need to create a Uniswap v4 Position in the dAPP..</p>
                     <p>If you haven't created a position yet, follow the <a href="#create-position" class="link" target="_blank">Create Position Guide</a></p>
                 </div>
@@ -3029,7 +3037,7 @@ body {
                         <h4>Get Required Tokens</h4>
                         <p>You need both <span class="highlight">0xBitcoin</span> and <span class="highlight">B Zero X</span> tokens. 
                         To get some of each, visit the swap page @<a href="http://bzerox.org/?swap" class="link" target="_blank">https://bzerox.org/?swap</a>
-                        or Bridge them from Mainnet page at <a href="https://superbridge.app/?fromChainId=1&toChainId=8453&tokenAddress=0xb6ed7644c69416d67b522e20bc294a9a9b405b31" class="link" target="_blank">https://superbridge.app/?fromChainId=1&toChainId=8453&tokenAddress=0xb6ed7644c69416d67b522e20bc294a9a9b405b31</a></p>
+                        or Bridge them from Mainnet page at <a href="https://timelock.bzerox.org/?bridge&dir=toBase&asset=0xBTC" class="link" target="_blank">https://timelock.bzerox.org/?bridge&dir=toBase&asset=0xBTC</a></p>
                     </div>
                 </div>
 
@@ -3037,7 +3045,7 @@ body {
                     <div class="step-number">4</div>
                     <div class="step-content">
                         <h4>Create a Position</h4>
-                        <p>Go to the Create a Position page at <a href="https://testnet.bzerox.org/?create" class="link" target="_blank">https://testnet.bzerox.org/?create</a></p>
+                        <p>Go to the Create a Position page at <a href="https://bzerox.org/?create" class="link" target="_blank">https://bzerox.org/?create</a></p>
                         <p>Enter your desired amount of B0x or 0xBitcoin - the system will automatically fill in the appropriate amount for the other side.</p>
                     </div>
                 </div>
@@ -3072,6 +3080,189 @@ body {
         </div>
     </div>
 
+    <div class="content-page" id="how-to-guess">
+        <div class="content-header">
+            <h1 class="content-title">How to use B0x Guess</h1>
+            <p class="content-description">
+                A provably-fair number-guessing dApp on Base — guess a number, wager B0x, and get resolved by
+                Chainlink VRF. Play at <a href="https://guess.bzerox.org/" class="link">https://guess.bzerox.org/</a>
+            </p>
+        </div>
+
+        <div class="prerequisites-box">
+            <h3>Prerequisites</h3>
+            <p><strong>Base Ethereum Required:</strong> You need ETH on Base to pay for gas.</p>
+            <p>If you don't have any Base ETH, go to <a href="#how-to-bridge" class="link">How to Bridge</a>.</p>
+            <p><strong>B0x Required:</strong> B0x is the token you wager and stake with.</p>
+            <p><strong>Chainlink (LINK) Required:</strong> Every guess pays for a Chainlink VRF randomness request in LINK.</p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Getting the Tokens You Need on Base</h2>
+            <div class="section-content">
+
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Get Ethereum (ETH) on Base</h4>
+                        <p>Bridge ETH from Ethereum Mainnet at
+                            <a href="https://timelock.bzerox.org/?bridge&dir=toBase&asset=ETH" class="link">https://timelock.bzerox.org/?bridge&dir=toBase&asset=ETH</a>.
+                            See <a href="#how-to-bridge" class="link">How to Bridge</a> for the full walkthrough.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Get 0xBitcoin (0xBTC)</h4>
+                        <p>We suggest using our bridge to bring 0xBitcoin over to Base:
+                            <a href="https://timelock.bzerox.org/?bridge&dir=toBase&asset=0xBTC" class="link">https://timelock.bzerox.org/?bridge&dir=toBase&asset=0xBTC</a></p>
+                        <p>Don't have any 0xBitcoin yet? We suggest buying 0xBitcoin on the Ethereum blockchain using
+                            <a href="https://swap.defillama.com/?chain=ethereum&from=0x0000000000000000000000000000000000000000&tab=swap&to=0xb6ed7644c69416d67b522e20bc294a9a9b405b31" class="link">DefiLlama</a>,
+                            then bridging it to Base using our bridge above.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Get B Zero X (B0x)</h4>
+                        <p>Once you have 0xBitcoin, we suggest using 0xBitcoin to get B0x — swap it directly on the
+                            swap page at <a href="https://bzerox.org/?swap" class="link">https://bzerox.org/?swap</a>
+                            (B0x <span style="font-size: 2.5em;">↔</span> 0xBitcoin is a supported pair). You can also jump there from the
+                            <span class="highlight">Buy B0x</span> button inside B0x Guess itself.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Get Chainlink (LINK)</h4>
+                        <p>The easiest way is right inside B0x Guess: once your wallet is connected, use the
+                            <span class="highlight">Buy LINK with ETH (Uniswap)</span> button. It swaps a bit of your
+                            Base ETH for LINK on the LINK/WETH Uniswap v3 pool, targeting about 3x your current
+                            estimated LINK cost so you can cover a couple of bets.</p>
+                        <p>You can also buy Chainlink directly using Base DefiLlama at
+                            <a href="https://swap.defillama.com/?chain=base&from=0x0000000000000000000000000000000000000000&tab=swap&to=0x88fb150bdc53a65fe94dea0c9ba0a6daf8c6e196" class="link">DefiLlama</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Placing a Guess</h2>
+            <div class="section-content">
+
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Visit the dApp</h4>
+                        <p>Go to <a href="https://guess.bzerox.org/" class="link">https://guess.bzerox.org/</a> and click
+                            <span class="highlight">Connect Wallet</span> (Rabby, Metamask, or WalletConnect), on the Base network.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Choose Your Guess</h4>
+                        <p>Pick a number between <span class="highlight">1 and 97</span>. A random number from 0–99 is drawn each bet —
+                            you win if it lands <em>below</em> your guess. Lower guesses pay out more per B0x wagered.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Enter Your Bet Amount</h4>
+                        <p>Enter how much B0x to wager. Check <span class="highlight">Potential payout</span>,
+                            <span class="highlight">Max bet at this guess</span>, and <span class="highlight">Est. LINK cost</span> before
+                            confirming — these update live as you adjust your guess and amount.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Place Bet</h4>
+                        <p>Click <span class="highlight">Place Bet</span> and confirm the transaction(s) in your wallet. Your wager and
+                            the LINK cost for the Chainlink VRF request are both pulled at this step.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4>Wait for the Result</h4>
+                        <p>Chainlink VRF resolves your bet a few blocks later. Track it under <span class="highlight">My Bets</span> and
+                            <span class="highlight">Recent Activity</span> — winnings are paid out automatically as soon as the random word
+                            comes back.</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Note:</strong> If Chainlink fulfillment ever seems stuck, anyone can pay for an extra "blank"
+                    randomness request from the <span class="highlight">Advanced: Buy Extra VRF Request</span> panel to help
+                    clear the queue — this costs LINK and doesn't affect your own bet.
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">How to Stake in B0x Guess (Become the House)</h2>
+            <div class="section-content">
+                <p>Staked B0x becomes the bankroll that pays out winners. As a staker you earn a share of losing
+                    bets, minus a 2.5% withdrawal fee.</p>
+
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Go to the Stake Section</h4>
+                        <p>Scroll to <span class="highlight">Stake — Become the House</span> in the dApp.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Enter an Amount and Stake</h4>
+                        <p>Enter an amount of B0x (or click <span class="highlight">Max</span>) and click
+                            <span class="highlight">Stake</span>. Approve B0x if prompted, then confirm the stake transaction.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Track Your Position</h4>
+                        <p>Watch <span class="highlight">Your pool ownership</span> and <span class="highlight">Withdrawable value</span> —
+                            these move as bets are won and lost against the pool.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Withdraw</h4>
+                        <p>Set <span class="highlight">Max acceptable pending payouts</span> (it defaults to the current value) and click
+                            <span class="highlight">Withdraw All</span>. If outstanding bet payouts exceed what you set, the withdrawal is
+                            skipped rather than draining funds still owed to guessers — raise your tolerance or wait for pending bets to
+                            resolve, then try again.</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Important:</strong> Staking is not risk-free yield — the pool you own a share of pays out
+                    guessers, so a run of guesser wins reduces its value just as a run of losses grows it. A 2.5% fee
+                    applies on withdrawal.
+                </div>
+            </div>
+        </div>
+
+        <p>For the full technical breakdown of the contract's mechanics, see the
+            <a href="#b0xguess-contract" class="link">B0xGuess Contract Reference</a>.</p>
+    </div>
+
     <div class="content-page" id="how-to-swap">
         <div class="content-header">
             <h1 class="content-title">How to Swap</h1>
@@ -3084,7 +3275,7 @@ body {
             <div class="prerequisites-box">
                     <h3>Prerequisites</h3>
                     <p><strong>Base Ethereum Required:</strong> You need Base ETH to pay for gas fees and to bridge to Base.</p>
-                    <p>If you don't have any Base ETH, go to how to bridge <a href="#how-to-bridge" class="link" target="_blank">How to Bridge</a>.</p>
+                    <p>If you don't have any Base ETH, go to how to bridge <a href="#how-to-bridge" class="link">How to Bridge</a>.</p>
                 <p><strong>Testnet B0x & Testnet 0xBitcoin Required:</strong> You need Testnet Tokens to use inside the dAPP..</p>
             </div>
 
@@ -3185,8 +3376,8 @@ body {
                     <p>If you don't have any ETH, get some!</div>
 
                 <h3>Quick Bridge Process</h3>
-                <p>Visit the 0xBTC bridge page at <a href="https://superbridge.app/?fromChainId=1&toChainId=8453&tokenAddress=0xb6ed7644c69416d67b522e20bc294a9a9b405b31" class="link" target="_blank">https://superbridge.app/?fromChainId=1&toChainId=8453&tokenAddress=0xb6ed7644c69416d67b522e20bc294a9a9b405b31</a>
-<br></br>Visit the B0x bridge page at <a href="https://superbridge.app/?fromChainId=1&toChainId=8453&tokenAddress=0x6B19E31C1813cD00b0d47d798601414b79A3e8AD" class="link" target="_blank">https://superbridge.app/?fromChainId=1&toChainId=8453&tokenAddress=0x6B19E31C1813cD00b0d47d798601414b79A3e8AD</a>
+                <p>Visit the 0xBTC bridge page at <a href="https://timelock.bzerox.org/?bridge&dir=toBase&asset=0xBTC" class="link">https://timelock.bzerox.org/?bridge&dir=toBase&asset=0xBTC</a>
+<br></br>Visit the B0x bridge page at <a href="https://timelock.bzerox.org/?bridge&dir=toBase&asset=B0x" class="link">https://timelock.bzerox.org/?bridge&dir=toBase&asset=B0x</a>
 
                 <h3>Supported Networks</h3>
                 <ul>
@@ -3208,7 +3399,7 @@ body {
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <h4>Visit the Bridge</h4>
-                        <p>Go to <a href="https://superbridge.app/" class="link" target="_blank">https://superbridge.app/</a></p>
+                        <p>Go to <a href="https://timelock.bzerox.org/?bridge&dir=toBase&asset=ETH" class="link">https://timelock.bzerox.org/?bridge&dir=toBase&asset=ETH</a></p>
                     </div>
                 </div>
 
@@ -3233,9 +3424,8 @@ body {
                     <div class="step-number">5</div>
                     <div class="step-content">
                         <h4>Choose Token</h4>
-                        <p>Select Ethereum from the token dropdown menu</p>
-                        <p>Enter 0xB6eD7644C69416d67B522e20bC294A9a9B405B31 for 0xBTC into the bridge</p>
-                        <p>Enter 0x6B19E31C1813cD00b0d47d798601414b79A3e8AD for B0x into the bridge</p>
+                        <p>Select Ethereum or 0xBitcoin or Asset from the token dropdown menu</p>
+                        <p>Select which direction the bridge goes ETH-> Base or Base-> ETH</p>
                      <!--  <p>Enter 0xbCEaA05d2C153C3E961Fbae0640f58d968d9DDaD for RightsTo0xBitcoin into the bridge</p>-->  
                     </div>
                 </div>
@@ -3267,8 +3457,8 @@ body {
                     <div class="step-number">8</div>
                     <div class="step-content">
                         <h4>Use the dAPP</h4>
-                        <p>Now you can use the Base dAPP!  Swap Tokens here <a href="https://bzerox.org/?swap" class="link" target="_blank">https://bzerox.org/?create-position</a>
-                            and then create a position using <a href="https://bzerox.org/?create-position" class="link" target="_blank">https://bzerox.org/?create-position</a></p>
+                        <p>Now you can use the Base dAPP!  Swap Tokens here <a href="https://bzerox.org/?swap" class="link">https://bzerox.org/?create-position</a>
+                            and then create a position using <a href="https://bzerox.org/?create-position" class="link">https://bzerox.org/?create-position</a></p>
                     </div>
                 </div>
 
@@ -3362,7 +3552,7 @@ body {
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h4>Navigate to Convert</h4>
-                        <p>Find the Convert Tab in the dApp. Go to <a href="https://testnet.bzerox.org/?convert" class="link" target="_blank">https://testnet.bzerox.org/?convert</a></p>
+                        <p>Find the Convert Tab in the dApp. Go to <a href="https://bzerox.org/?convert" class="link" target="_blank">https://bzerox.org/?convert</a></p>
                     </div>
                 </div>
 
@@ -3445,7 +3635,7 @@ await b0xContract.depositFromV1toV2(amount);</div>
             <div class="prerequisites-box">
                     <h3>Prerequisites</h3>
                     <p><strong>Base Ethereum Required:</strong> You need Base Ethereum to pay for gas fees.</p>
-                    <p>If you don't have any Base Ethereum, go to how to bridge <a href="#how-to-bridge" class="link" target="_blank">How to Bridge</a>.</p>
+                    <p>If you don't have any Base Ethereum, go to how to bridge <a href="#how-to-bridge" class="link">How to Bridge</a>.</p>
                 <p><strong>Base B0x & Base 0xBitcoin Required:</strong> You need Base Tokens to use inside the dAPP..</p>
                     <p>If you have no testnet tokens but have Base ETH Go get tokens here to swap <a href="https://bzerox.org/?swap" class="link" target="_blank">https://bzerox.org/?swap</a></p>
                 </div>
@@ -3593,9 +3783,9 @@ await b0xContract.depositFromV1toV2(amount);</div>
         <div class="prerequisites-box">
             <h3>Prerequisites</h3>
             <p><strong>Base Ethereum Required:</strong> You need Base ETH to pay for gas fees.</p>
-            <p>If you don't have any Base ETH, go to <a href="#how-to-bridge" class="link" target="_blank">How to Bridge</a>.</p>
+            <p>If you don't have any Base ETH, go to <a href="#how-to-bridge" class="link">How to Bridge</a>.</p>
             <p><strong>An Existing 0xBTC/B0x Uniswap v4 Position:</strong> You need a Uniswap v4 B0x/0xBTC LP NFT position before you can timelock it.</p>
-            <p>If you haven't created one yet, follow the <a href="#create-position" class="link" target="_blank">Create Position Guide</a> first. You do <strong>not</strong> need to stake it yourself beforehand — the vault stakes it into the LP pool for you as part of the timelock process.</p>
+            <p>If you haven't created one yet, follow the <a href="#create-position" class="link">Create Position Guide</a> first. You do <strong>not</strong> need to stake it yourself beforehand — the vault stakes it into the LP pool for you as part of the timelock process.</p>
         </div>
 
         <div class="content-section">
@@ -5837,7 +6027,7 @@ creator.createNewPool(b0xAddress, otherTokenAddress, deployedHook);
             <div class="info-item">
                 <span class="info-label">TimeLockFactory:</span>
                 <span class="info-value">
-                    <div class="address">0x66194F5527102ade749f9bE950A30cCCD9926B91</div>
+                    <div class="address">0xff054C399444d64bD772Ca4Efe71C6449E08C955</div>
                 </span>
             </div>
             <div class="info-item">
@@ -5856,6 +6046,12 @@ creator.createNewPool(b0xAddress, otherTokenAddress, deployedHook);
                 <span class="info-label">B0x Token:</span>
                 <span class="info-value">
                     <div class="address">0x6B19E31C1813cD00b0d47d798601414b79A3e8AD</div>
+                </span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">B0xGuess (staking bankroll):</span>
+                <span class="info-value">
+                    <div class="address">0x57da35b42B97908255D5B1655DaC6ed936fc3668</div>
                 </span>
             </div>
             <div class="info-item">
@@ -5908,12 +6104,16 @@ creator.createNewPool(b0xAddress, otherTokenAddress, deployedHook);
                     Same as above but for the 0xBTC-denominated share.
                 </div>
                 <div class="function-item">
-                    <span class="function-name">SuperWithdrawer(address[] vaults, uint256[][] tokenIds, IERC20[][] rewardTokens)</span><br>
-                    Batch-calls <code>withdraw_Multiple_NFTs_And_ERC20s</code> across many vaults in one transaction; each call is wrapped in try/catch so one failing vault never blocks the rest.
+                    <span class="function-name">SuperWithdrawer(address[] vaults, uint256[][] tokenIds, IERC20[][] rewardTokens, uint256 maxPenaltyOnB0xGuess)</span><br>
+                    Batch-withdraws across many vaults in one transaction. Per vault, checks <code>owner()</code>: if the caller owns it, calls <code>withdraw_Multiple_NFTs_And_ERC20s_OWNERONLY</code> (accepts up to <code>maxPenaltyOnB0xGuess</code> B0x Guess penalty); otherwise calls the permissionless <code>withdraw_Multiple_NFTs_And_ERC20s</code> (zero-penalty B0x Guess withdraw only). Each call is wrapped in try/catch so one failing vault never blocks the rest.
                 </div>
                 <div class="function-item">
                     <span class="function-name">SuperDestroyer(address[] vaults)</span><br>
                     Batch-attempts <code>DESTROY_VAULT_FOREVER()</code> across vaults the caller owns; skips any vault that isn't owned by the caller or that fails its unlock/debt checks.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">SuperGuessDepositor(address[] vaults, uint256 maxDepositOfB0xPerVault)</span><br>
+                    Batch-claims B0x LP staking rewards into, then stakes B0x from, each vault the caller owns — capped per vault at <code>maxDepositOfB0xPerVault</code>. Works even on locked vaults, since nothing leaves the vault. Reward-claim failures are silently ignored; a failed stake call skips that vault via <code>continue</code>.
                 </div>
             </div>
         </div>
@@ -5931,7 +6131,11 @@ creator.createNewPool(b0xAddress, otherTokenAddress, deployedHook);
                 </div>
                 <div class="function-item">
                     <span class="function-name">withdraw_Multiple_NFTs_And_ERC20s(uint256[] tokenIds, IERC20[] rewardTokens)</span><br>
-                    <code>afterUnlock</code> only. Loops <code>withdrawNFT</code> per token ID inside a try/catch (one bad ID can't revert the batch), wraps any held ETH to WETH, then claims and sweeps the given reward tokens to the owner.
+                    <code>afterUnlock</code> only, callable by <strong>anyone</strong>. Loops <code>withdrawNFT</code> per token ID inside a try/catch (one bad ID can't revert the batch), tries a zero-penalty <code>withdrawB0xGuess()</code>, then claims and sweeps the given reward tokens to the owner.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">withdraw_Multiple_NFTs_And_ERC20s_OWNERONLY(uint256[] tokenIds, IERC20[] rewardTokens, uint256 penaltyOfB0x)</span><br>
+                    Same as above, but <code>onlyOwnerorFactory</code> and withdraws the B0x Guess position with a caller-chosen <code>penaltyOfB0x</code> tolerance instead of a hard zero — lets the owner force it through even with bets outstanding.
                 </div>
                 <div class="function-item">
                     <span class="function-name">withdrawToken(address token)</span><br>
@@ -5956,6 +6160,41 @@ creator.createNewPool(b0xAddress, otherTokenAddress, deployedHook);
                 <div class="function-item">
                     <span class="function-name">wrapETHtoWETH()</span><br>
                     Callable by anyone at any time; wraps whatever ETH balance the vault currently holds into WETH.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🎲 B0x Guess Integration</h2>
+            <p>Each vault holds its own position in the shared <a href="#b0xguess-contract" class="link">B0xGuess</a> staking bankroll, timelocked alongside the vault's other assets. A vault's B0x Guess power can be exercised by the owner or by a delegated <code>GuessDepoCaller</code> — see the Modifiers section below.</p>
+            <div class="function-list">
+                <div class="function-item">
+                    <span class="function-name">stakeB0xGuess(uint256 amountOfB0x)</span><br>
+                    Permissionless. Pulls <code>amountOfB0x</code> B0x from the caller's wallet via <code>transferFrom</code> and stakes it into this vault's B0x Guess position — anyone can stake B0x into any vault.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">stakeVaultB0xGuess(uint256 amountOfB0x)</span><br>
+                    <code>onlyOwnerorGuessDepoCallerorFactory</code>. Stakes <code>amountOfB0x</code> of the vault's own (already-held) B0x balance into B0x Guess — no wallet approval needed since the tokens are already in the vault.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">stakeVaultMaxAndRewards()</span><br>
+                    <code>onlyOwnerorGuessDepoCallerorFactory</code>. Calls <code>getRewardForTokensContract</code> for B0x (reverts the whole call if that claim reverts — no try/catch), then stakes the vault's resulting entire B0x balance via <code>stakeVaultB0xGuess</code>.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">withdrawB0xGuess()</span><br>
+                    <code>afterUnlock</code>, callable by anyone. Withdraws the vault's full B0x Guess balance back into the vault with a hard <code>maxLoss = 0</code> — no-ops without reverting if any bet penalty is currently owed.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">withdrawB0xGuessOwner(uint256 maxPenalty)</span><br>
+                    <code>afterUnlock</code>, <code>onlyOwner</code>. Same withdrawal, but lets the owner accept up to <code>maxPenalty</code> B0x of loss to force it through despite outstanding bets.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">change_GuessDepoCaller(address newGuessDepoCaller)</span><br>
+                    <strong>No access control on-chain</strong> — callable by anyone, for any vault. Sets who (besides the owner/factory) may call <code>stakeVaultB0xGuess</code>/<code>stakeVaultMaxAndRewards</code>. Grants no withdrawal power. <code>transferOwnership</code> resets it to the new owner.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">BalOfB0xGuess(address user) / B0xGuessPenalty()</span><br>
+                    View passthroughs to <code>B0xGuess.currentB0x(user)</code> and <code>B0xGuess.penalty()</code> — the latter is a global value shared by every vault, not per-vault.
                 </div>
             </div>
         </div>
@@ -5989,6 +6228,10 @@ creator.createNewPool(b0xAddress, otherTokenAddress, deployedHook);
             <div class="info-item">
                 <span class="info-label">onlyOwnerorFactory:</span>
                 <span class="info-value">msg.sender must equal owner or the factory</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">onlyOwnerorGuessDepoCallerorFactory:</span>
+                <span class="info-value">msg.sender must equal owner, the factory, or the vault's delegated GuessDepoCaller</span>
             </div>
             <div class="info-item">
                 <span class="info-label">afterUnlock:</span>
@@ -6056,8 +6299,9 @@ creator.createNewPool(b0xAddress, otherTokenAddress, deployedHook);
             <h2>👥 Masquerade / Permissionless Model</h2>
             <ul class="feature-list">
                 <li><strong>Anyone can withdraw after unlock:</strong> <code>withdrawToken</code>, <code>withdrawNFT</code>, <code>withdraw_Multiple_NFTs_And_ERC20s</code>, and <code>exitAllTogether</code> have no owner check — but every one of them sends assets to the vault's registered <code>owner</code>, never to <code>msg.sender</code>.</li>
-                <li><strong>Anyone can stake for you:</strong> <code>stakeUniswapV4NFT</code> lets a non-owner deposit and stake an NFT into someone else's vault, paying a live-priced B0x fee for the privilege.</li>
-                <li><strong>Ownership handoff pulls debt:</strong> <code>transferOwnership</code> (owner-only, still-locked-only) has the factory pull a computed BZRX amount from the <em>old</em> owner as part of the transfer, so the old owner must pre-approve the factory.</li>
+                <li><strong>Anyone can stake for you:</strong> <code>stakeUniswapV4NFT</code> lets a non-owner deposit and stake an NFT into someone else's vault, paying a live-priced B0x fee for the privilege. <code>stakeB0xGuess</code> is similarly open — anyone may stake B0x into any vault's B0x Guess position, at no fee.</li>
+                <li><strong>GuessDepoCaller delegation is unrestricted:</strong> <code>change_GuessDepoCaller</code> has no access check at all — anyone can set (or overwrite) any vault's delegate. The delegate only gains the ability to move B0x already in the vault into/through B0x Guess; it grants no withdrawal power and can't move assets out of the vault.</li>
+                <li><strong>Ownership handoff pulls debt:</strong> <code>transferOwnership</code> (owner-only, still-locked-only) has the factory pull a computed BZRX amount from the <em>old</em> owner as part of the transfer, so the old owner must pre-approve the factory. It also resets <code>GuessDepoCaller</code> to the new owner.</li>
             </ul>
         </div>
 
@@ -6145,8 +6389,225 @@ TimeLockVault(vault).exitAllTogether(0, 25, new address[](0));
                 <li><strong>Pagination caps:</strong> <code>getVaults</code>, <code>getVaultsB0xShares</code>, and <code>getVaultsBTCShares</code> all clamp <code>count</code> to <code>MAX_PAGE_SIZE</code> (100), preventing an unbounded-read griefing vector against inflated vault lists.</li>
                 <li><strong>Vault authenticity checks:</strong> <code>recordOwnershipTransfer</code> and <code>DestroyOwnership_TransferToDEADEND</code> both require <code>_isVault[msg.sender]</code> and <code>msg.sender == vault</code>, so only a genuine factory-deployed vault can rewrite factory bookkeeping.</li>
                 <li><strong>Burn destination is fixed:</strong> <code>DestroyOwnership_TransferToDEADEND</code> requires <code>newOwner == Proof_OF_Work_B0x</code> — it can never route ownership anywhere else.</li>
-                <li><strong>Batch isolation:</strong> <code>withdraw_Multiple_NFTs_And_ERC20s</code>, <code>SuperWithdrawer</code>, and <code>SuperDestroyer</code> all wrap per-item calls in try/catch so one bad token ID or uncooperative vault can't block the rest of the batch.</li>
+                <li><strong>Batch isolation:</strong> <code>withdraw_Multiple_NFTs_And_ERC20s</code>, <code>SuperWithdrawer</code>, <code>SuperDestroyer</code>, and <code>SuperGuessDepositor</code> all wrap per-item calls in try/catch so one bad token ID or uncooperative vault can't block the rest of the batch.</li>
                 <li><strong>Owner-directed funds:</strong> Even the functions with no owner check (<code>exitAllTogether</code>, the withdrawal trio) hard-code the destination as <code>owner</code>, never <code>msg.sender</code> — permissionless calling, not permissionless payout.</li>
+                <li><strong>GuessDepoCaller cannot withdraw:</strong> <code>stakeVaultB0xGuess</code>/<code>stakeVaultMaxAndRewards</code> only move B0x already inside the vault into B0x Guess; nothing gated on <code>onlyOwnerorGuessDepoCallerorFactory</code> can send funds anywhere but deeper into the vault's own staking position.</li>
+                <li><strong>Note — unrestricted delegate assignment:</strong> unlike every other state-changing vault function, <code>change_GuessDepoCaller</code> has no modifier at all, so any address can appoint itself (or anyone) as a given vault's GuessDepoCaller at will.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- B0xGuess Contract Reference Page -->
+<div class="content-page" id="b0xguess-contract">
+    <div class="content-header">
+        <h1>🎲 B0xGuess Contract</h1>
+        <p>Provably-Fair Number Guessing Game with a Staked B0x Bankroll, Resolved by Chainlink VRF v2.5</p>
+    </div>
+
+    <div class="launch-info">
+        <h3>🎯 Contract Overview</h3>
+        <div class="info-item">
+            <span class="info-label">Purpose:</span>
+            <span class="info-value">Guess a number 1–97; win if a Chainlink-random 0–99 roll lands below your guess</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Network:</span>
+            <span class="info-value">Base Mainnet</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Wagered / Staked Token:</span>
+            <span class="info-value">B0x</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Randomness:</span>
+            <span class="info-value">Chainlink VRF v2.5, direct-funding, paid in LINK</span>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h2>📋 Deployment Info</h2>
+            <div class="info-item">
+                <span class="info-label">B0xGuess Address:</span>
+                <span class="info-value"><div class="address">0x57da35b42B97908255D5B1655DaC6ed936fc3668</div></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Staked Token (B0x):</span>
+                <span class="info-value"><div class="address">0x6B19E31C1813cD00b0d47d798601414b79A3e8AD</div></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">LINK Token:</span>
+                <span class="info-value"><div class="address">0x88Fb150BDc53A65fe94Dea0c9BA0a6dAf8C6e196</div></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">VRF v2.5 Wrapper:</span>
+                <span class="info-value"><div class="address">0xb0407dbe851f8318bd31404A49e658143C982F23</div></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Owner:</span>
+                <span class="info-value"><div class="address">0x23400DC0cC44fb8F295fD4C73bB19528066b59f3</div></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Network:</span>
+                <span class="network-badge">Base</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🎮 Betting Mechanics</h2>
+            <div class="function-list">
+                <div class="function-item">
+                    <span class="function-name">getRandomNumber(uint256 guess, uint256 amt)</span><br>
+                    Places a bet: guess must be strictly between 0 and 98, amt is wagered in B0x. Requires a VRF request
+                    fee, paid in LINK.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">MaxINForGuess(uint256 guess)</span><br>
+                    Max B0x that can be wagered on a given guess, based on the available bankroll
+                </div>
+                <div class="function-item">
+                    <span class="function-name">estOUTPUT(uint256 betAmount, uint256 odds)</span><br>
+                    Estimated payout for a bet, before it's placed
+                </div>
+                <div class="function-item">
+                    <span class="function-name">maxGuessPerInput(uint256 amt)</span><br>
+                    Finds the largest guess that stays affordable and profitable for a given wager
+                </div>
+            </div>
+            <h3>Payout Scaling</h3>
+            <p>The payout multiplier scales down as a bet gets large relative to the bankroll (bankroll-to-bet ratio
+                <code>ratioz</code>), so thin bankrolls pay a smaller fraction of the theoretical odds:</p>
+            <ul class="feature-list">
+                <li><strong>ratioz &lt; 30:</strong> 90% of theoretical odds</li>
+                <li><strong>ratioz &lt; 50:</strong> 93%</li>
+                <li><strong>ratioz &lt; 100:</strong> 96%</li>
+                <li><strong>ratioz &lt; 200:</strong> 98%</li>
+                <li><strong>ratioz &lt; 400:</strong> 99%</li>
+                <li><strong>ratioz &lt; 1000:</strong> 99.5%</li>
+                <li><strong>ratioz ≥ 1000:</strong> 99%</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>🎲 Chainlink VRF v2.5 Resolution</h2>
+            <div class="function-list">
+                <div class="function-item">
+                    <span class="function-name">fulfillRandomWords(uint256, uint256[] randomWords)</span><br>
+                    VRF callback; resolves the oldest unresolved bet FIFO (via <code>betid</code>/<code>betidIN</code>),
+                    pays the winner or records a fallback minimum on a loss
+                </div>
+                <div class="function-item">
+                    <span class="function-name">getBlank()</span><br>
+                    Public safety valve — anyone can pay (in LINK) for an extra "blank" VRF request if Chainlink
+                    fulfillment seems stuck, to help clear the queue
+                </div>
+                <div class="function-item">
+                    <span class="function-name">requestPrice()</span><br>
+                    Live LINK cost of one VRF request at the current callback gas limit / confirmations
+                </div>
+            </div>
+            <h3>LINK Subsidy</h3>
+            <p>Bets at or above 20× <code>AmountWeOWE_PER_POSITION2</code> qualify for a LINK rebate toward the VRF
+                request price, capped by <code>FreeBetLink</code> and by the contract's own LINK balance.
+                <code>FreeBetLink</code> is owner-adjustable via <code>setFreeBetLink()</code>, which sets it to 450×
+                the current <code>requestPrice()</code>.</p>
+        </div>
+
+        <div class="card">
+            <h2>🏦 Staking / Bankroll</h2>
+            <div class="function-list">
+                <div class="function-item">
+                    <span class="function-name">stake(uint256 amount)</span><br>
+                    Stakes B0x into the bankroll on your own behalf, minting staking shares proportional to the current pool
+                </div>
+                <div class="function-item">
+                    <span class="function-name">stakeForSomeoneElse(address forWhom, uint256 amount)</span><br>
+                    Same as <code>stake()</code>, but credits the newly minted shares to <code>forWhom</code> instead of the caller
+                </div>
+                <div class="function-item">
+                    <span class="function-name">withdraw(uint256 amount, uint256 maxLoss)</span><br>
+                    Burns staking shares and pays out B0x minus a 2.5% fee; no-ops if <code>maxLoss</code> is below the
+                    currently outstanding bet penalty
+                </div>
+                <div class="function-item">
+                    <span class="function-name">perfectWithdraw(uint256 maxLoss)</span><br>
+                    Convenience wrapper: withdraws the caller's entire share balance
+                </div>
+                <div class="function-item">
+                    <span class="function-name">uOut / withEstimator / currentB0x</span><br>
+                    View helpers that preview the B0x value of a share amount, net of the pending-bet penalty and fee
+                </div>
+                <div class="function-item">
+                    <span class="function-name">Profit(address user)</span><br>
+                    Combines realized profit/loss with the currently withdrawable value for a full lifetime P&L
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📈 Price-Adjusted Position Sizing</h2>
+            <p>The baseline per-position bet size (<code>AmountWeOWE_PER_POSITION2</code>) halves each time B0x's USD
+                price doubles past its threshold, down to a floor of 0.0000001 B0x — keeping bet sizes meaningful in
+                USD terms as price moves. VRF confirmations ramp up alongside it (3 up to 20).</p>
+            <div class="function-list">
+                <div class="function-item">
+                    <span class="function-name">getPriceOFB0xINUSD()</span><br>
+                    Combines a Uniswap V3 ETH/USDC pool (for ETH/USD) with a Uniswap v4 B0x/ETH pool (via StateView) to
+                    price B0x in USD
+                </div>
+                <div class="function-item">
+                    <span class="function-name">queryRequiredB0xAmount()</span><br>
+                    Computes what the current amount/confirmations schedule would resolve to, without changing state
+                </div>
+                <div class="function-item">
+                    <span class="function-name">setAmountWeOwePerPosition()</span><br>
+                    Permissionless, but time-gated: a new value must be confirmed 4 times, each at least 46 hours apart
+                    (~96h+ minimum), with no change in between, before it commits. Any drift mid-sequence resets the
+                    whole checkpoint chain.
+                </div>
+                <div class="function-item">
+                    <span class="function-name">shouldWeCall_SetAmountWeOwePerPosition()</span><br>
+                    View helper — tells you whether calling <code>setAmountWeOwePerPosition()</code> right now would
+                    actually change anything
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📡 Events &amp; Read Functions</h2>
+            <div class="function-list">
+                <div class="function-item">
+                    <span class="function-name">event GuessNote(guess, amount, user, betID)</span><br>
+                    Emitted when a bet is placed
+                </div>
+                <div class="function-item">
+                    <span class="function-name">event ShowAnswer(guess, result, amountWagered, betID, user, amountWon, chainlinkRandom)</span><br>
+                    Emitted when a bet is resolved
+                </div>
+                <div class="function-item">
+                    <span class="function-name">event Staked(user, amount) / event Withdrawn(user, amount)</span><br>
+                    Emitted on staking and withdrawal
+                </div>
+                <div class="function-item">
+                    <span class="function-name">getUserBetCount / getUserBetIds(user, offset, limit)</span><br>
+                    Paginated access to a user's full bet history, without scanning event logs
+                </div>
+                <div class="function-item">
+                    <span class="function-name">penalty()</span><br>
+                    Sum of winnings currently owed across all unresolved bets
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🛡️ Security Notes</h2>
+            <ul class="feature-list">
+                <li><strong>Owner-gated:</strong> Only <code>transferOwnership()</code> and <code>setFreeBetLink()</code> are restricted to the owner</li>
+                <li><strong>Permissionless price updates:</strong> <code>setAmountWeOwePerPosition()</code> can be called by anyone, but only commits after a multi-day, multi-checkpoint delay — a manipulated price has to be sustained for the full window with no reversion</li>
+                <li><strong>Withdrawal protection:</strong> <code>withdraw()</code> is blocked whenever the outstanding bet penalty exceeds the caller's <code>maxLoss</code> tolerance, so stakers can't be drained out from under bets still owed to guessers</li>
+                <li><strong>FIFO resolution:</strong> Bets always resolve in the order placed (<code>betid</code>/<code>betidIN</code>), independent of VRF callback arrival order</li>
+                <li><strong>Vendored VRF interfaces:</strong> The Chainlink VRF v2.5 direct-funding interfaces are a hand-written reimplementation, not the official audited <code>@chainlink/contracts</code> package — noted directly in the contract's own source comments</li>
             </ul>
         </div>
     </div>
@@ -6984,7 +7445,9 @@ let currentPage = 'what-is-b-zero-x';
             'position-finder',
             'univ4-hook',
             'hook-miner-contract',
-            'pool-creator'
+            'pool-creator',
+            'how-to-guess',
+            'b0xguess-contract'
         ];
 
         const pageTitles = {
@@ -7014,6 +7477,8 @@ let currentPage = 'what-is-b-zero-x';
             'hook-miner-contract': 'HookMiner',
             'pool-creator': 'UniswapV4PoolCreator',
             'side-pools': 'Creating Liquidity Pools Positions not Staked',
+            'how-to-guess': 'How to use B0x Guess',
+            'b0xguess-contract': 'B0xGuess',
         };
 function updateSidebarHighlight(pageId) {
     // Remove all active states
@@ -7126,6 +7591,7 @@ function updateSidebarHighlight(pageId) {
                     <div class="footer-section">
                         <h3>Ecosystem</h3>
                         <ul>
+                            <li><a href="https://bzerox.org" class="external-link">Mainnet dAPP</a></li>
                             <li><a href="https://bzerox.com" class="external-link">Home</a></li>
                             <li><a href="https://testnet.bzerox.org" class="external-link">Testnet dAPP</a></li>
                             <li><a href="https://media.bzerox.com" class="external-link">Brand Assets</a></li>
@@ -7410,10 +7876,20 @@ function showPage(pageId) {
         title: 'HookMiner Contract', 
         keywords: 'hook miner contract mining rewards distribution integration hook data parameters liquidity providers traders additional rewards' 
     },
-    { 
-        id: 'pool-creator', 
-        title: 'UniswapV4PoolCreator Contract', 
-        keywords: 'pool creator factory contract uniswap v4 pools b zero x integration fee tiers tick spacing configuration' 
+    {
+        id: 'pool-creator',
+        title: 'UniswapV4PoolCreator Contract',
+        keywords: 'pool creator factory contract uniswap v4 pools b zero x integration fee tiers tick spacing configuration'
+    },
+    {
+        id: 'how-to-guess',
+        title: 'How to use B0x Guess',
+        keywords: 'b0x guess dapp guessing game bet stake ethereum 0xbitcoin b zero x chainlink link bridge swap tokens base'
+    },
+    {
+        id: 'b0xguess-contract',
+        title: 'B0xGuess Contract',
+        keywords: 'b0xguess contract guessing game chainlink vrf randomness staking bankroll payout odds link subsidy base mainnet'
     }
 ];
                 
